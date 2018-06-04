@@ -233,9 +233,7 @@
     methods: {
       //  滚动加载事件
       loadList () {
-        console.log(this.productPage)
         this.productPage++
-        console.log(this.productPage)
         this._getProductData()
         // this.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.finishLoad')
       },
@@ -248,7 +246,6 @@
       fn (label, key) {
         if (key === 0) this._getProductData()   //  切换佣金产品获取数据
         if (key === 1) this._getOurClient()   //  切换客户列表获取数据
-        console.log(label, key)
       },
       itemClick (key) {
         this.type = this.items[key].type
@@ -281,16 +278,15 @@
           }
         }).catch(err => {
           this.$dialog.loading.close()
-          console.log(err)
         })
       },
       //  获取客户列表数据
       _getOurClient () {
         this.$dialog.loading.open('数据加载中')
-        this.$axios.post('http://m.jubao520.com/app/product/kehulist', this.$qs.stringify({uid: 918, page: this.clientPage}))
+        let uid = localStorage.getItem('uid')
+        this.$axios.post('http://m.jubao520.com/app/product/kehulist', this.$qs.stringify({uid, page: this.clientPage}))
           .then(res => {
             this.$dialog.loading.close()
-            console.log(res.data.data)
             if (res.data.code === 1) this.clientList = res.data.data
           })
           .catch(() => {

@@ -52,7 +52,8 @@ export default {
   methods: {
     // 获取数据
     _getData () {
-      this.$axios.post('http://m.jubao520.com/app/income/myvip', this.$qs.stringify({status: this.key, uid: 918}))
+      let uid = localStorage.getItem('uid')
+      this.$axios.post('http://m.jubao520.com/app/income/myvip', this.$qs.stringify({status: this.key, uid}))
       .then(result => {
         this.data = result.data.data
       })

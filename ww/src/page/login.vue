@@ -38,22 +38,13 @@ export default {
       localStorage.setItem('token', '12358496854')
       let {appphone, apppassword} = this
       
-      //  axios post 请求解决方法一
       let postData = this.$qs.stringify({
         appphone: appphone,
         apppassword: apppassword
       })
-      console.log(typeof postData)
-      // this.$axios({
-      //   method: 'post',
-      //   url: 'http://m.jubao520.com/app/index/login',
-      //   data: postData,
-      // }).then(res => {
-      //   console.log(res)
-      // })
       this.$axios.post('http://m.jubao520.com/app/index/login', postData)
         .then(res => {
-          console.log(res)
+          if(res.data.code == 1) localStorage.setItem('uid', res.data.data.user_id)
         })
 
       //  axios post 请求解决方法二

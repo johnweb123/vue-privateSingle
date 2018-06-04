@@ -1,6 +1,6 @@
 <template>
   <div>
-    <yd-infinitescroll :callback="loadList" ref="infinitescrollDemo" class="margin-button1">
+    <yd-infinitescroll :callback="loadList" ref="infinitescrollDemo" class="margin-button1" :scroll-top="true">
       <yd-flexbox v-for="(item, index) in data" :key="index" class="conent" slot="list" @click.native="detail(item.id)">
           <div class="imgbox"><img src="../../../static/img/user.png"></div>
           <yd-flexbox-item class="subject">
@@ -75,6 +75,15 @@ export default {
       this.$axios.post('http://m.jubao520.com/app/mag/index', this.$qs.stringify({page:this.page, cateid: this.id}))
       .then(result => {
         this.data = [...this.data, ...result.data.data]
+
+        if (result.data.data.length < 10) {
+              /* 所有数据加载完毕 */
+              this.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.loadedDone');
+              return;
+          }
+
+          /* 单次请求数据完毕 */
+          this.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.finishLoad');
       })
     }  
   }

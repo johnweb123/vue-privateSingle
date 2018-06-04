@@ -51,7 +51,8 @@ export default {
   },
   methods: {
     _getData () {
-      this.$axios.post('http://m.jubao520.com/app/income/mydata', this.$qs.stringify({uid: 918}))
+      let uid = localStorage.getItem('uid')
+      this.$axios.post('http://m.jubao520.com/app/income/mydata', this.$qs.stringify({uid}))
         .then(result => {
           let {true_name, nickname, appphone, weixinnum, qianming} = result.data.data
           this.true_name = true_name
@@ -63,7 +64,8 @@ export default {
     },
     postData () {
       let {true_name, nickname, weixinnum, qianming} = this
-      this.$axios.post('http://m.jubao520.com/app/income/mydatasave', this.$qs.stringify({true_name, nickname, weixinnum, qianming, uid: 918}))
+      let uid = localStorage.getItem('uid')
+      this.$axios.post('http://m.jubao520.com/app/income/mydatasave', this.$qs.stringify({true_name, nickname, weixinnum, qianming, uid}))
         .then(result => {
           // 资料修改与否提示
           result.data.code === -1

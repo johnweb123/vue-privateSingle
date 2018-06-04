@@ -255,7 +255,8 @@ export default {
   methods: {
     _getData () {
       var vm = this
-      this.$axios.post('http://m.jubao520.com/app/income/myadmin', this.$qs.stringify({uid: 918}))
+      let uid = localStorage.getItem('uid')
+      this.$axios.post('http://m.jubao520.com/app/income/myadmin', this.$qs.stringify({uid}))
         .then((res) => {
           if (res.status === 200 && res.data.code === 1) {
             vm.userInfo = res.data.data

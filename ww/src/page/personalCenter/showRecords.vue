@@ -42,7 +42,8 @@ export default {
   },
   methods: {
     _getData () {
-      this.$axios.post('http://m.jubao520.com/app/income/moneyrecord', this.$qs.stringify({uid: 918}))
+      let uid = localStorage.getItem('uid')
+      this.$axios.post('http://m.jubao520.com/app/income/moneyrecord', this.$qs.stringify({uid}))
         .then(result => {
           this.list = result.data.data
         })
@@ -50,7 +51,8 @@ export default {
     // 滚动加载
     loadList () {
       this.page++
-      this.$axios.post('http://m.jubao520.com/app/income/moneyrecord', this.$qs.stringify({uid: 918, page: this.page}))
+      let uid = localStorage.getItem('uid')
+      this.$axios.post('http://m.jubao520.com/app/income/moneyrecord', this.$qs.stringify({uid, page: this.page}))
         .then(result => {
           this.list = [...this.list, result.data.data]
         })

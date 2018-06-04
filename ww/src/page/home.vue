@@ -26,7 +26,7 @@
             <img slot="icon" src="../../static/img/home/newbie_guide.png">
             <span slot="text">新手指南</span>
         </yd-grids-item>
-        <yd-grids-item type="link" @click.native="$router.push({path: '/article', query: { type: 'dkzx'}})">
+        <yd-grids-item type="link" @click.native="$router.push({path: '/generalize'})">
             <img slot="icon" src="../../static/img/home/million_guest to_push.png">
             <span slot="text">亿客地推</span>
         </yd-grids-item>
