@@ -250,13 +250,14 @@ export default {
     // this._getData()
   },
   mounted () {
+    console.log()
     this._getData()
   },
   methods: {
     _getData () {
       var vm = this
       let uid = localStorage.getItem('uid')
-      this.$axios.post('http://m.jubao520.com/app/income/myadmin', this.$qs.stringify({uid}))
+      this.$axios.post(`${this.$store.state.G_HOST}/app/income/myadmin`, this.$qs.stringify({uid: 918}))
         .then((res) => {
           if (res.status === 200 && res.data.code === 1) {
             vm.userInfo = res.data.data

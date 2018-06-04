@@ -15,7 +15,7 @@
             <span slot="text">升级会员</span>
         </yd-grids-item>
         <yd-grids-item type="link" @click.native="$router.push({path: '/article', query: { type: 'dkzx'}})">
-            <img slot="icon" src="../../static/img/home/loan_center.png">    
+            <img slot="icon" src="../../static/img/home/loan_center.png">
             <span slot="text">贷款中心</span>
         </yd-grids-item>
         <yd-grids-item type="link" @click.native="$router.push({path: '/article', query: { type: 'bkzx'}})">
@@ -76,7 +76,7 @@
 
 <script>
 import Scroll from './components/infiniteScroll'
-import axios from 'axios'
+
 export default {
   name: 'home',
   components: {
@@ -113,5 +113,5 @@ export default {
   .notive {
     padding-left: 0.4rem
   }
-  
+
 </style>
