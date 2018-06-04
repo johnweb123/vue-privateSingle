@@ -41,7 +41,8 @@ export default {
   methods: {
     // 获取数据
     _getData () {
-      this.$axios.post('http://m.jubao520.com/app/income/extension', this.$qs.stringify({uid: 918}))
+      let uid = localStorage.getItem('uid')
+      this.$axios.post('http://m.jubao520.com/app/income/extension', this.$qs.stringify({uid}))
       .then(result => {
         this.data = result.data.data
       })
@@ -63,7 +64,8 @@ export default {
     // 滚动加载
     loadList() {
       this.page++
-      this.$axios.post('http://m.jubao520.com/app/income/extension', this.$qs.stringify({page:this.page, uid: 918}))
+      let uid = localStorage.getItem('uid')
+      this.$axios.post('http://m.jubao520.com/app/income/extension', this.$qs.stringify({page:this.page, uid}))
       .then(result => {
         this.data = [...this.data, ...result.data.data]
       })
