@@ -1,0 +1,46 @@
+{
+  "code": 200,
+  "message": "成功",
+  "data": {
+    "id": 12341,
+    "account": 513135,
+    "goldBalance": 515.4,
+    "checkPending": 0,
+    "haveTaken": 10000,
+    "userUrl": "../../../static/img/user-img.jpg",
+    "list": [
+      {
+        "url": "../../../static/img/logo.png",
+        "name": "代理升级"
+      },
+      {
+        "url": "../../../static/img/logo.png",
+        "name": "代理升级"
+      },
+      {
+        "url": "../../../static/img/logo.png",
+        "name": "代理升级"
+      },
+      {
+        "url": "../../../static/img/logo.png",
+        "name": "代理升级"
+      },
+      {
+        "url": "../../../static/img/logo.png",
+        "name": "代理升级"
+      },
+      {
+        "url": "../../../static/img/logo.png",
+        "name": "代理升级"
+      },
+      {
+        "url": "../../../static/img/logo.png",
+        "name": "代理升级"
+      },
+      {
+        "url": "../../../static/img/logo.png",
+        "name": "代理升级"
+      }
+    ]
+  }
+}
