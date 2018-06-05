@@ -16,6 +16,11 @@ const listFriends = resolve => require(['@/page/personalCenter/listFriends.vue']
 const myData = resolve => require(['@/page/personalCenter/myData.vue'], resolve)
 const myWallet = resolve => require(['@/page/personalCenter/myWallet.vue'], resolve)
 const article = resolve => require(['@/page/components/article.vue'], resolve)
+const commissionList = resolve => require(['@/page/personalCenter/commissionList.vue'], resolve)
+const logout = resolve => require(['@/page/logout.vue'], resolve)
+const register = resolve => require(['@/page/register.vue'], resolve)
+const articleDetails = resolve => require(['@/page/components/articleDetails.vue'], resolve)
+const upgradeUser = resolve => require(['@/page/personalCenter/upgradeUser.vue'], resolve)
 
 // Adair
 const generalize = resolve => require(['@/page/personalCenter/generalize.vue'], resolve)
@@ -26,29 +31,44 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'name',
+      name: 'login',
+      component: login
+    },
+    {
+      path: '/home',
+      name: 'home',
       component: home,
       meta: {
-        requireAuth: true  //  添加该字段,表示进入这个路由是需要登录权限的
+        requiresAuth: true  //  添加该字段,表示进入这个路由是需要登录权限的
       }
     },
     {
       path: '/share',
       name: 'share',
-      component: share
+      component: share,
+      meta: {
+        requiresAuth: true  //  添加该字段,表示进入这个路由是需要登录权限的
+      }
     },
     {
       path: '/message',
       name: 'message',
-      component: message
+      component: message,
+      meta: {
+        requiresAuth: true  //  添加该字段,表示进入这个路由是需要登录权限的
+      }
     },
     {
       path: '/personalCenter',
       name: 'personalCenter',
-      component: personalCenter
+      component: personalCenter,
+      meta: {
+        requiresAuth: true  //  添加该字段,表示进入这个路由是需要登录权限的
+      }
     },
     {
       path: '*',
+      name: 'notFound',
       component: notFound
     },
     {
@@ -62,9 +82,14 @@ export default new Router({
       component: incomeDetails
     },
     {
-      path: '/login',
-      name: 'login',
-      component: login
+      path: '/logout',
+      name: 'logout',
+      component: logout
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: register
     },
     {
       path: '/generalize',
@@ -98,7 +123,23 @@ export default new Router({
     },
     {
       path: '/article',
+      name: 'article',
       component: article
+    },
+    {
+      path: '/commissionList',
+      name: 'commissionList',
+      component: commissionList
+    },
+    {
+      path: '/articleDetails',
+      name: 'articleDetails',
+      component: articleDetails
+    },
+    {
+      path: '/upgradeUser',
+      name: 'upgradeUser',
+      component: upgradeUser
     }
   ]
 })

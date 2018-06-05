@@ -68,7 +68,7 @@ export default {
   methods: {
     _getData () {
       let uid = localStorage.getItem('uid')
-      this.$axios.post('http://m.jubao520.com/app/income/myqian',this.$qs.stringify({uid}))
+      this.$axios.post(this.$store.state.G_HOST+'/app/income/myqian',this.$qs.stringify({uid}))
         .then(result => {
           let {yuee, yitixian, daishenhe} = result.data.data
           this.yuee = yuee
@@ -82,7 +82,7 @@ export default {
       let uid = localStorage.getItem('uid')
       if (!/^[0-9]*$/.test(money)) return this.openAlert('请填写正确的金额')
       if (!input.valid) return this.openAlert(input.errorMsg)
-      this.$axios.post('http://m.jubao520.com/app/income/mytiqian',this.$qs.stringify({
+      this.$axios.post(this.$store.state.G_HOST+'/app/income/mytiqian',this.$qs.stringify({
         money,
         zfnum,
         zfname,

@@ -27,7 +27,7 @@ export default {
   },
   mounted () {
     this.type = this.$route.query.type
-    this.$axios.post(`http://m.jubao520.com/app/index/${this.type}`)
+    this.$axios.post(this.$store.state.G_HOST+`/app/index/${this.type}`)
       .then(result => {
         let {conter, time, title} = result.data.data
         this.conter = conter

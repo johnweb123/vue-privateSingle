@@ -1,11 +1,8 @@
 <template>
   <div>
     <!-- 头部信息 -->
-    <yd-navbar title="已提金额" class="margin-button2">
-        <span @click="$router.go(-1)" slot="left">
-            <yd-navbar-back-icon></yd-navbar-back-icon>
-        </span>
-    </yd-navbar>
+    <pageHeader :title="'已提金额'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'" :leftText="'返回'"></pageHeader> 
+
     <!-- 提现记录 -->
     <yd-infinitescroll :callback="loadList" ref="infinitescrollDemo">
       <yd-cell-group v-for="(item, index) in list" :key="index" slot="list">
@@ -30,6 +27,7 @@
 </template>
 
 <script>
+import pageHeader from '../components/page-header'
 export default {
   data () {
     return {
@@ -37,13 +35,16 @@ export default {
       page: 1
     }
   },
+  components: {
+    pageHeader
+  },
   mounted () {
     this._getData()
   },
   methods: {
     _getData () {
       let uid = localStorage.getItem('uid')
-      this.$axios.post('http://m.jubao520.com/app/income/moneyrecord', this.$qs.stringify({uid}))
+      this.$axios.post(this.$store.state.G_HOST+'/app/income/moneyrecord', this.$qs.stringify({uid}))
         .then(result => {
           this.list = result.data.data
         })
@@ -52,9 +53,19 @@ export default {
     loadList () {
       this.page++
       let uid = localStorage.getItem('uid')
-      this.$axios.post('http://m.jubao520.com/app/income/moneyrecord', this.$qs.stringify({uid, page: this.page}))
+      this.$axios.post(this.$store.state.G_HOST+'/app/income/moneyrecord', this.$qs.stringify({uid, page: this.page}))
         .then(result => {
-          this.list = [...this.list, result.data.data]
+          if (result.data.data.length !== 0 && Array.isArray(result.data.data)) {
+            this.list = [...this.list, result.data.data]
+          }
+          if (result.data.data.length < 10) {
+              /* 所有数据加载完毕 */
+              this.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.loadedDone');
+              return;
+          }
+
+          /* 单次请求数据完毕 */
+          this.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.finishLoad');
         })
     },
     // 时间戳转时间

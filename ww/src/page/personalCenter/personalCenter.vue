@@ -119,7 +119,7 @@
 <template>
   <div class="personalCenter">
     <!-- 头部 start -->
-    <page-header :title="'个人中心'" :rightIcon="'setting'" :bgcolor="'#44c125'"></page-header>
+    <page-header :title="'个人中心'" :rightIcon="'setting'" :bgcolor="'#44c125'" @page-right-click="setting()"></page-header>
     <!-- 头部 end -->
 
     <div class="main">
@@ -151,12 +151,12 @@
         </div>
 
         <p>[会员等级]: {{ userInfo.user.levelname }}</p>
-        <p class="recommend">推荐人：{{ userInfo.parent.nickname }}<a><img src="../../../static/img/logo.png" alt=""></a></p>
+        <p class="recommend">推荐人：{{ userInfo.parent.nickname }}<a :href="`${userInfo.parent.appphone}`"><img src="../../../static/img/personalCenter/min.png" alt=""></a></p>
       </div>
 
       <div class="wallet" @click="$router.push({path:'/myWallet'})">
         <div>
-          <img src="../../../static/img/logo.png" class="icon-wallet">
+          <img src="../../../static/img/personalCenter/myWallet.png" class="icon-wallet">
           我的钱包
         </div>
         <div class="right">
@@ -166,57 +166,20 @@
       </div>
 
       <yd-grids-group :rows="4" item-height="80px">
-        <yd-grids-item link="/">
-            <div slot="else" style="text-align: center;">
-                <img src="../../../static/img/logo.png" style="height: 30px;">
-                <p>钱包</p>
-            </div>
+        <yd-grids-item :link="item.link" v-for="(item, index) in allList" :key="index" style="text-align:center">
+          <div slot="else" style="text-center">
+            <img :src="imgfrist+item.img" style="height:30px">
+            <p>{{ item.text }}</p>
+          </div>
         </yd-grids-item>
-        <yd-grids-item link="/listFriends">
-            <div slot="else" style="text-align: center;">
-                <img src="../../../static/img/logo.png" style="height: 30px;">
-                <p>我的好友</p>
-            </div>
-        </yd-grids-item>
-        <yd-grids-item link="/myData">
-            <div slot="else" style="text-align: center;">
-                <img src="../../../static/img/logo.png" style="height: 30px;">
-                <p>我的资料</p>
-            </div>
-        </yd-grids-item>
-        <yd-grids-item link="/showRecords">
-            <div slot="else" style="text-align: center;">
-                <img src="../../../static/img/logo.png" style="height: 30px;">
-                <p>提现记录</p>
-            </div>
-        </yd-grids-item>
-        <yd-grids-item link="/incomeDetails">
-            <div slot="else" style="text-align: center;">
-                <img src="../../../static/img/logo.png" style="height: 30px;">
-                <p>收入明细</p>
-            </div>
-        </yd-grids-item>
-        <yd-grids-item link="/generalize">
-            <div slot="else" style="text-align: center;">
-                <img src="../../../static/img/logo.png" style="height: 30px;">
-                <p>蚂蚁地推</p>
-            </div>
-        </yd-grids-item>
-
-        <yd-grids-item link="/article/?type=lxkf">
-            <div slot="else" style="text-align: center;">
-                <img src="../../../static/img/logo.png" style="height: 30px;">
-                <p>联系客服</p>
-            </div>
-        </yd-grids-item>
-    </yd-grids-group>
+      </yd-grids-group>
     </div>
 
 
 
     <!-- 底部 start -->
     <yd-tabbar :fixed="true">
-        <yd-tabbar-item title="首页" link="/">
+        <yd-tabbar-item title="首页" link="/home">
           <yd-icon name="home" slot="icon" size=".6rem"></yd-icon>
             <!-- <yd-icon name="home" slot="icon" size="0.54rem" active="true"></yd-icon> -->
         </yd-tabbar-item>
@@ -240,20 +203,29 @@ export default {
   name: 'personalCenter',
   data () {
     return {
-      userInfo: {}
+      userInfo: {},
+      imgfrist: '../../../static/img/personalCenter/',
+      allList: [
+        {img: "upgrade.png", text: '代理升级', link: '/home'},
+        {img: "friends.png", text: '我的好友', link: 'listFriends'},
+        {img: "mydata.png", text: '我的资料', link: 'myData'},
+        {img: "showRecords.png", text: '提现记录', link: 'showRecords'},
+        {img: "incomeDetails.png", text: '收入明细', link: 'incomeDetails'},
+        {img: "generalize.png", text: '蚂蚁地推', link: 'generalize'},
+        {img: "service.png", text: '联系客服', link: '/article/?type=lxkf'}
+      ]
     }
   },
   components: {
     pageHeader
   },
-  created () {
-    // this._getData()
-  },
   mounted () {
-    console.log()
     this._getData()
   },
   methods: {
+    setting () {
+      this.$router.push('/logout')
+    },
     _getData () {
       var vm = this
       let uid = localStorage.getItem('uid')
@@ -261,10 +233,8 @@ export default {
         .then((res) => {
           if (res.status === 200 && res.data.code === 1) {
             vm.userInfo = res.data.data
-            console.log(vm.userInfo.user.headimg)
           }
         }, res => {
-          console.log(res)
         })
     }
   }

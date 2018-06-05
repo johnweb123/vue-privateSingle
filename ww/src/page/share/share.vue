@@ -8,8 +8,7 @@
     height:1.2rem;
     line-height: 1.2rem;
     padding: 0 .4rem;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #ddd;
     border-radius: 6px;
     font-size: .3rem;
     span {
@@ -88,7 +87,7 @@
 
 
     <yd-tabbar :fixed="true">
-        <yd-tabbar-item title="首页" link="/">
+        <yd-tabbar-item title="首页" link="/home">
         <yd-icon name="home" slot="icon" size=".6rem"></yd-icon>
             <!-- <yd-icon name="home" slot="icon" size="0.54rem" active="true"></yd-icon> -->
         </yd-tabbar-item>

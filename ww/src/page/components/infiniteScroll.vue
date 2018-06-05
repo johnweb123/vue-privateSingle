@@ -1,7 +1,7 @@
 <template>
   <div>
     <yd-infinitescroll :callback="loadList" ref="infinitescrollDemo" class="margin-button1" :scroll-top="true">
-      <yd-flexbox v-for="(item, index) in data" :key="index" class="conent" slot="list" @click.native="detail(item.id)">
+      <yd-flexbox v-for="(item, index) in data" :key="index" class="conent" slot="list" @click.native="detail(item.id, item.title, item.conter)">
           <div class="imgbox"><img src="../../../static/img/user.png"></div>
           <yd-flexbox-item class="subject">
             <p class="title">{{item.title}}</p>
@@ -41,16 +41,20 @@ export default {
         this.$dialog.alert({mes:message});
     },
     // 访问文章获取权限
-    detail (id) {
-      this.$axios.post('http://m.jubao520.com/app/Mag/uquanxian', this.$qs.stringify({mid: this.page, uid: id}))
+    detail (mid, title, conent) {
+      let uid = localStorage.getItem('uid')
+      this.$axios.post(this.$store.state.G_HOST+'/app/Mag/uquanxian', this.$qs.stringify({mid, uid}))
         .then(result => {
-          if (result.data.code == -1) this.openAlert(result.data.message)
+          // 如果有权限就进入详情，如果没有权限就提示
+          result.data.code == -1
+            ? this.openAlert(result.data.message)
+            : this.$router.push({path: '/articleDetails', query: {mid}})
           // else this.$router.push({path: '/')
         })
     },
     // 获取数据
     _getData () {
-      this.$axios.post('http://m.jubao520.com/app/mag/index', this.$qs.stringify({page: this.page, cateid: this.id}))
+      this.$axios.post(this.$store.state.G_HOST+'/app/mag/index', this.$qs.stringify({page: this.page, cateid: this.id}))
       .then(result => {
         this.data = result.data.data
       })
@@ -72,20 +76,21 @@ export default {
     // 滚动加载
     loadList() {
       this.page++
-      this.$axios.post('http://m.jubao520.com/app/mag/index', this.$qs.stringify({page:this.page, cateid: this.id}))
+      this.$axios.post(this.$store.state.G_HOST+'/app/mag/index', this.$qs.stringify({page:this.page, cateid: this.id}))
       .then(result => {
-        this.data = [...this.data, ...result.data.data]
-
+        if (result.data.data.length !== 0 && Array.isArray(result.data.data)) {
+          this.data = [...this.data, ...result.data.data]
+        }
         if (result.data.data.length < 10) {
-              /* 所有数据加载完毕 */
-              this.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.loadedDone');
-              return;
-          }
+            /* 所有数据加载完毕 */
+            this.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.loadedDone');
+            return;
+        }
 
-          /* 单次请求数据完毕 */
-          this.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.finishLoad');
+        /* 单次请求数据完毕 */
+        this.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.finishLoad');
       })
-    }  
+    }
   }
 }
 </script>
