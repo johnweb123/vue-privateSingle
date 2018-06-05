@@ -27,10 +27,10 @@ export default new Router({
     {
       path: '/',
       name: 'name',
-      component: home
-      // meta: {
-      //   requireAuth: true  //  添加该字段,表示进入这个路由是需要登录权限的
-      // }
+      component: home,
+      meta: {
+        requireAuth: true  //  添加该字段,表示进入这个路由是需要登录权限的
+      }
     },
     {
       path: '/share',
