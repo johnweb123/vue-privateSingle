@@ -42,7 +42,7 @@ export default {
     // 获取数据
     _getData () {
       let uid = localStorage.getItem('uid')
-      this.$axios.post('http://m.jubao520.com/app/income/loan', this.$qs.stringify({uid}))
+      this.$axios.post(this.$store.state.G_HOST+'/app/income/loan', this.$qs.stringify({uid}))
       .then(result => {
         this.data = result.data.data
       })
@@ -65,9 +65,19 @@ export default {
     loadList() {
       this.page++;
       let uid = localStorage.getItem('uid')
-      this.$axios.post('http://m.jubao520.com/app/income/loan', this.$qs.stringify({page:this.page, uid}))
+      this.$axios.post(this.$store.state.G_HOST+'/app/income/loan', this.$qs.stringify({page:this.page, uid}))
       .then(result => {
-        this.data = [...this.data, ...result.data.data]
+        if (result.data.data.length !== 0 && Array.isArray(result.data.data)) {
+          this.data = [...this.data, ...result.data.data]
+        }
+        if (result.data.data.length < 10 || result.data.data == '') {
+              /* 所有数据加载完毕 */
+              this.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.loadedDone');
+              return;
+          }
+
+        /* 单次请求数据完毕 */
+        this.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.finishLoad');
       })
     }  
   }

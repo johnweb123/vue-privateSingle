@@ -29,36 +29,36 @@ export default {
       apppassword: ''
     }
   },
+  creatd () {
+    if (localStorage.getItem('token')) {
+      this.log()
+    }
+  },
   mounted () {
-    // console.log(this.$store.state.token)
   },
   methods: {
+    log () {},
     greet () {
-      /* eslint-disable  */
-      localStorage.setItem('token', '12358496854')
+      // /* eslint-disable  */
       let {appphone, apppassword} = this
       
       let postData = this.$qs.stringify({
         appphone: appphone,
         apppassword: apppassword
       })
-      this.$axios.post('http://m.jubao520.com/app/index/login', postData)
-        .then(res => {
-          if(res.data.code == 1) localStorage.setItem('uid', res.data.data.user_id)
+      this.$axios.post(this.$store.state.G_HOST+'/app/index/login', postData)
+        .then(result => {
+          if (result.data.code == 1) {
+             localStorage.setItem('uid', result.data.data.user_id)
+             localStorage.setItem('token', '123465798')
+             this.$router.push({path:'/home'})
+          } else {
+            return this.openAlert(result.data.message)
+          }
         })
-
-      //  axios post 请求解决方法二
-      // const url = 'http://m.jubao520.com/app/index/login'
-      // let params = new URLSearchParams()
-      // params.append('appphone', this.appphone)
-      // params.append('apppassword', this.apppassword)
-      // this.$axios({
-      //   method: 'post',
-      //   url: url,
-      //   data: params
-      // }).then(res => {
-      //   console.log(res)
-      // })
+    },
+    openAlert(mes) {
+        this.$dialog.alert({mes});
     }
   }
   // computed: mapState(["token"])

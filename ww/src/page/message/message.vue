@@ -8,7 +8,7 @@
     </yd-tab>
 
     <yd-tabbar :fixed="true">
-        <yd-tabbar-item title="首页" link="/">
+        <yd-tabbar-item title="首页" link="/home">
         <yd-icon name="home" slot="icon" size=".6rem"></yd-icon>
             <!-- <yd-icon name="home" slot="icon" size="0.54rem" active="true"></yd-icon> -->
         </yd-tabbar-item>
@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     _getTab () {
-        this.$axios.post('http://m.jubao520.com/app/mag/cate')
+        this.$axios.post(this.$store.state.G_HOST+'/app/mag/cate')
             .then(result => { this.tab = result.data.data})
       }
   }

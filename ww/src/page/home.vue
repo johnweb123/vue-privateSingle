@@ -10,7 +10,7 @@
     </yd-slider>
     <!-- 首页四格 -->
     <yd-grids-group :rows="4" item-height="">
-        <yd-grids-item type="link" link="/">
+        <yd-grids-item type="link" link="/upgradeUser">
             <img slot="icon" src="../../static/img/home/upgrade_membership.png">
             <span slot="text">升级会员</span>
         </yd-grids-item>
@@ -58,7 +58,7 @@
 
     <!-- 底部 -->
     <yd-tabbar :fixed="true">
-        <yd-tabbar-item title="首页" link="/" active>
+        <yd-tabbar-item title="首页" link="/home" active>
           <yd-icon name="home" slot="icon" size="0.54rem"></yd-icon>
         </yd-tabbar-item>
         <yd-tabbar-item title="分享" link="/share">
@@ -95,11 +95,11 @@ export default {
   },
   methods: {
       _getTab () {
-        this.$axios.post('http://m.jubao520.com/app/mag/cate')
+        this.$axios.post(this.$store.state.G_HOST+'/app/mag/cate')
             .then(result => { this.tab = result.data.data})
       },
       _getData () {
-        this.$axios.post('http://m.jubao520.com/app/index/myhone')
+        this.$axios.post(this.$store.state.G_HOST+'/app/index/myhone')
             .then(result => {
                 this.banner = result.data.data.banner
                 this.gundong = result.data.data.gundong

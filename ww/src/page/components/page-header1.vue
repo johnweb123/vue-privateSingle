@@ -10,22 +10,20 @@
   <div class="page-header">
     <yd-navbar :title="title" :bgcolor="bgcolor" color="#fff">
 
-      <span slot="left" v-if="leftIcon === 'leftArrow'" @click="leftClick">
+      <router-link to="#" slot="left" v-if="leftIcon === 'leftArrow'">
           <yd-navbar-back-icon color="#fff"></yd-navbar-back-icon>
-          <span v-if="leftText" style="color:#fff">{{ leftText }}</span>
-      </span>
-      <span slot="left" v-else-if="leftIcon">
+      </router-link>
+      <router-link to="#" slot="left" v-else-if="leftIcon">
           <yd-icon :name="leftIcon" size="25px" color="#fff"></yd-icon>
-      </span>
+      </router-link>
 
 
-      <span slot="right" v-if="rightIcon === 'rightArrow'" @click="rightClick">
+      <router-link to="#" slot="right" v-if="rightIcon === 'rightArrow'">
           <yd-navbar-next-icon></yd-navbar-next-icon>
-          <span v-if="rightText" style="color:#fff">{{ rightText }}</span>
-      </span>
-      <span slot="right" v-else-if="rightIcon" @click="rightClick">
+      </router-link>
+      <router-link to="#" slot="right" v-else-if="rightIcon">
           <yd-icon :name="rightIcon" size="25px" color="#fff"></yd-icon>
-      </span>
+      </router-link>
     </yd-navbar>
   </div>
 </template>
@@ -42,15 +40,7 @@ export default {
       type: String,
       default: ''
     },
-    leftText: {
-      type: String,
-      default: ''
-    },
     rightIcon: {
-      type: String,
-      default: ''
-    },
-    rightText: {
       type: String,
       default: ''
     },
@@ -62,17 +52,6 @@ export default {
       type: String,
       default: ''
     }
-  },
-  methods: {
-    leftClick () {
-      this.$router.go(-1)
-    },
-    rightClick () {
-      this.$emit('page-right-click')
-    }
-  },
-  beforeRouteEnter (to, form, next) {
-    next()
   }
 }
 </script>
