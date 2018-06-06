@@ -18,30 +18,30 @@ Vue.config.productionTip = false
 Vue.use(YDUI)
 
 // 创建一个axios实例
-const instance = axios.create()
-// request拦截器
-// debugger
-axios.interceptors.request.use(config => {
-  //在发送请求之前做某事
-  console.log(config.headers)
-  let token = localStorage.getItem('token')
-  if (token) {
-    config.headers.common.Authorization = token
-  }
-  return config
- }, err => {
-  //请求错误时做些事
-  return Promise.reject(err);
- })
-// response拦截器
-axios.interceptors.response.use(res => {
-  if (res.headers.token) {
-    localStorage.setItem('token', res.headers.token)
-  }
-  return res
-}, err => {
-  return err
-})
+// const instance = axios.create()
+// // request拦截器
+// // debugger
+// axios.interceptors.request.use(config => {
+//   //在发送请求之前做某事
+//   console.log(config.headers)
+//   let token = localStorage.getItem('token')
+//   if (token) {
+//     config.headers.common.Authorization = token
+//   }
+//   return config
+//  }, err => {
+//   //请求错误时做些事
+//   return Promise.reject(err);
+//  })
+// // response拦截器
+// axios.interceptors.response.use(res => {
+//   if (res.headers.token) {
+//     localStorage.setItem('token', res.headers.token)
+//   }
+//   return res
+// }, err => {
+//   return err
+// })
 
 
 //  路由导航

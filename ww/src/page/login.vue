@@ -29,7 +29,7 @@ export default {
       apppassword: ''
     }
   },
-  creatd () {
+  created () {
     if (localStorage.getItem('token')) {
       this.log()
     }
@@ -37,11 +37,14 @@ export default {
   mounted () {
   },
   methods: {
-    log () {},
+    log () {
+      debugger
+      this.$router.push({path: '/home'})
+    },
     greet () {
       // /* eslint-disable  */
       let {appphone, apppassword} = this
-      
+
       let postData = this.$qs.stringify({
         appphone: appphone,
         apppassword: apppassword
