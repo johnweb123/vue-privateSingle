@@ -53,7 +53,6 @@ export default {
         {
           label: '支付宝',
           callback: (message) => { //调用支付接口
-            cconsole.log(this)
               this.$dialog.toast({mes: '咔擦，此人太帅！'});
               /* 注意： callback: function() {} 和 callback() {}  这样是无法正常使用当前this的 */
               let data ={

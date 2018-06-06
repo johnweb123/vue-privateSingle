@@ -8,8 +8,7 @@
 
       <div>
         <yd-infinitescroll :callback="loadList" ref="infinitescrollDemo">
-            <div class="product-list" v-for="(item,key) in dataList" :key="key" slot="list" theme="1">
-              <a href="http://cyzs.aici123.com/index.php?m=Loan&a=loan_detail&loan_id=b708236509c34b87a894efe8c857c0ae&from_user_id=838110">
+            <div class="product-list" @click="commissionDetails(item.id)" v-for="(item,key) in dataList" :key="key" slot="list" theme="1">
                 <div class="list-item">
                     <img class="list-img" :src="item.pic">
                     <div>
@@ -21,7 +20,6 @@
                       <p class="item-x">{{ item.feature }}</p>
                     </div>
                 </div>
-              </a>
               <div class="product-list-bottom">{{ item.fyname }}</div>
               <button class="agent">立即代理</button>
             </div>
@@ -111,6 +109,10 @@ export default {
       this.cate_id = item.id
       this._getData()
     },
+    commissionDetails (id) {
+      console.log(id)
+      this.$router.push({path: '/commissionDetails', query: {id}})
+    }
   }
 }
 </script>

@@ -45,7 +45,7 @@
 </style>
 
 <template>
-  <div class="share">
+  <div class="share" style="background-color:#fff">
     <!-- 头部 start -->
     <page-header :title="'分享'" :bgcolor="'#44c125'"></page-header>
     <!-- 头部 end -->

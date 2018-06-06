@@ -38,7 +38,6 @@ export default {
   },
   methods: {
     log () {
-      debugger
       this.$router.push({path: '/home'})
     },
     greet () {

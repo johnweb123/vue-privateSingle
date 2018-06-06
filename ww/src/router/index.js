@@ -21,6 +21,8 @@ const logout = resolve => require(['@/page/logout.vue'], resolve)
 const register = resolve => require(['@/page/register.vue'], resolve)
 const articleDetails = resolve => require(['@/page/components/articleDetails.vue'], resolve)
 const upgradeUser = resolve => require(['@/page/personalCenter/upgradeUser.vue'], resolve)
+const commissionDetails = resolve => require(['@/page/personalCenter/commissionDetails.vue'], resolve)
+const erweima = resolve => require(['@/page/personalCenter/erweima.vue'], resolve)
 
 // Adair
 const generalize = resolve => require(['@/page/personalCenter/generalize.vue'], resolve)
@@ -87,6 +89,11 @@ export default new Router({
       component: logout
     },
     {
+      path: '/login',
+      name: 'login',
+      component: login
+    },
+    {
       path: '/register',
       name: 'register',
       component: register
@@ -132,6 +139,11 @@ export default new Router({
       component: commissionList
     },
     {
+      path: '/commissionDetails',
+      name: 'commissionDetails',
+      component: commissionDetails
+    },
+    {
       path: '/articleDetails',
       name: 'articleDetails',
       component: articleDetails
@@ -140,6 +152,11 @@ export default new Router({
       path: '/upgradeUser',
       name: 'upgradeUser',
       component: upgradeUser
+    },
+    {
+      path: '/erweima',
+      name: 'erweima',
+      component: erweima
     }
   ]
 })

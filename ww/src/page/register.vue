@@ -25,10 +25,17 @@
               <span slot="left">密码：</span>
               <yd-input slot="right" type="password" v-model="apppassword" placeholder="请输入密码"></yd-input>
           </yd-cell-item>
-
+          <yd-cell-item>
+              <span slot="left">确认密码：</span>
+              <yd-input slot="right" type="password" v-model="apprepassword" placeholder="请输入密码"></yd-input>
+          </yd-cell-item>
+          <yd-cell-item>
+            <span slot="left">推荐人手机号：</span>
+            <yd-input slot="right" v-model="t_phone" regex="mobile" placeholder="请输入手机号码"></yd-input>
+        </yd-cell-item>
           <yd-cell-item>
             <span slot="left">验证码：</span>
-            <yd-input slot="right" required v-model="yjm" max="6" placeholder="请输入验证码"></yd-input>
+            <yd-input slot="right" required v-model="appcode" max="6" placeholder="请输入验证码"></yd-input>
           </yd-cell-item>
       </yd-cell-group>
 
@@ -43,8 +50,10 @@ export default {
     return {
       apppassword: '',
       start1: false,
-      yjm: '',
-      appphone: ''
+      appcode: '',
+      appphone: '',
+      apprepassword: '',
+      t_phone: ''
     }
   },
   mounted () {
@@ -52,17 +61,21 @@ export default {
   methods: {
     postData () {
       // /* eslint-disable  */
-      let {appphone, apppassword} = this
+      let {appphone, apppassword, apprepassword, appcode, t_phone} = this
       
       let postData = this.$qs.stringify({
-        appphone: appphone,
-        apppassword: apppassword
+        appphone,
+        apppassword,
+        apprepassword,
+        appcode,
+        t_phone
       })
-      this.$axios.post(this.$store.state.G_HOST+'/app/index/login', postData)
+      if ( this.apppassword !== apprepassword ) return this.openAlert('两次输入的密码不一致')
+
+      this.$axios.post(this.$store.state.G_HOST+'/app/index/register', postData)
         .then(result => {
           if (result.data.code == 1) {
-             localStorage.setItem('uid', result.data.data.user_id)
-             localStorage.setItem('token', '123465798')
+            this.openAlert(result.data.message)
              this.$router.push({path:'/login'})
           } else {
             return this.openAlert(result.data.message)
@@ -77,16 +90,22 @@ export default {
       } else {
         this.$dialog.loading.open('发送中...');
         setTimeout(() => {
+            this.$axios.post(this.$store.state.G_HOST+'/app/index/yzmcode', this.$qs.stringify({appphone: this.appphone}))
+              .then(result => {
 
-            this.start1 = true;
-            this.$dialog.loading.close();
+                if (result.data.code == -1){
+                    this.$dialog.loading.close();
+                   return this.openAlert(result.data.message) 
+                }
+                this.start1 = true;
+                this.$dialog.loading.close();
 
-            this.$dialog.toast({
-                mes: '已发送',
-                icon: 'success',
-                timeout: 1500
-            });
-
+                this.$dialog.toast({
+                    mes: '已发送',
+                    icon: 'success',
+                    timeout: 1500
+                });
+              })
         }, 1000);
       }
     },

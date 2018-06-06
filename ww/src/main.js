@@ -18,31 +18,40 @@ Vue.config.productionTip = false
 Vue.use(YDUI)
 
 // 创建一个axios实例
-// const instance = axios.create()
-// // request拦截器
-// // debugger
-// axios.interceptors.request.use(config => {
-//   //在发送请求之前做某事
-//   console.log(config.headers)
-//   let token = localStorage.getItem('token')
-//   if (token) {
-//     config.headers.common.Authorization = token
-//   }
-//   return config
-//  }, err => {
-//   //请求错误时做些事
-//   return Promise.reject(err);
-//  })
-// // response拦截器
-// axios.interceptors.response.use(res => {
-//   if (res.headers.token) {
-//     localStorage.setItem('token', res.headers.token)
-//   }
-//   return res
-// }, err => {
-//   return err
-// })
-
+const instance = axios.create()
+axios.interceptors.request.use = instance.interceptors.request.use
+// request拦截器
+instance.interceptors.request.use(
+  config => {
+    // 每次发送请求之前检测都vuex存有token,那么都要放在请求头发送给服务器
+    if (localStorage.getItem('token')) {
+      config.headers.Authorization = `token ${localStorage.getItem('token')}`
+    }
+    return config
+  },
+  err => {
+    return Promise.reject(err)
+  }
+)
+// respone拦截器
+instance.interceptors.response.use(
+  response => {
+    return response
+  },
+  error => { // 默认除了2XX之外的都是错误的，就会走这里
+    if (error.response) {
+      switch (error.response.status) {
+        case 401:
+          localStorage.setItem('token', '') // 可能是token过期，清除它
+          router.replace({  // 跳转到登录页面
+            path: '/login',
+            query: { redirect: router.currentRoute.fullPath } // 将跳转的路由path作为参数，登录成功后跳转到该路由
+          })
+      }
+    }
+    return Promise.reject(error.response)
+  }
+)
 
 //  路由导航
 router.beforeEach((to, form, next) => {
