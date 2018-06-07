@@ -1,7 +1,7 @@
 <template>
   <div>
     <yd-infinitescroll :callback="loadList" ref="infinitescrollDemo" class="margin-button1" :scroll-top="true">
-      <yd-flexbox v-for="(item, index) in data" :key="index" class="conent" slot="list" @click.native="detail(item.id, item.title, item.conter)">
+      <yd-flexbox v-for="(item, index) in data" :key="index" class="conent" slot="list" @click.native="getArticleDetailJurisdiction(item.id, item.title, item.conter)">
           <div class="imgbox"><img :src="item.img"></div>
           <yd-flexbox-item class="subject">
             <p class="title">{{item.title}}</p>
@@ -41,7 +41,7 @@ export default {
         this.$dialog.alert({mes:message});
     },
     // 访问文章获取权限
-    detail (mid, title, conent) {
+    getArticleDetailJurisdiction (mid, title, conent) {
       let uid = localStorage.getItem('uid')
       this.$axios.post(this.$store.state.G_HOST+'/app/Mag/uquanxian', this.$qs.stringify({mid, uid}))
         .then(result => {

@@ -1,5 +1,5 @@
 <template>
-  <div class="message hd">
+  <div class="message">
     <!-- 选项卡 -->
     <yd-tab>
         <yd-tab-panel :label="item.title" v-for="(item, key) in tab" :key="key">
@@ -7,10 +7,9 @@
         </yd-tab-panel>
     </yd-tab>
 
-    <yd-tabbar :fixed="true">
+    <!-- <yd-tabbar :fixed="true">
         <yd-tabbar-item title="首页" link="/home">
         <yd-icon name="home" slot="icon" size=".6rem"></yd-icon>
-            <!-- <yd-icon name="home" slot="icon" size="0.54rem" active="true"></yd-icon> -->
         </yd-tabbar-item>
         <yd-tabbar-item title="分享" link="/share">
           <yd-icon name="share3" slot="icon" size="0.54rem"></yd-icon>
@@ -21,7 +20,7 @@
         <yd-tabbar-item title="个人中心" link="/personalCenter">
             <yd-icon name="ucenter-outline" slot="icon" size="0.54rem"></yd-icon>
         </yd-tabbar-item>
-    </yd-tabbar>
+    </yd-tabbar> -->
   </div>
 </template>
 
@@ -49,3 +48,8 @@ export default {
 }
 </script>
 
+<style lang="less" scoped>
+.message {
+  margin-top: -1rem;
+}
+</style>

@@ -1,16 +1,16 @@
 <template>
-  <div class="QRCode">
+  <div class="qRCode">
 
-    <page-header :title="'扫码二维码'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'"></page-header>
+    <page-header :title="'扫码二维码'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'" :rightText="'保存'" @page-right-click="rightClick"></page-header>
 
-    <img :src="img" style="width: 100%">
+    <img :src="img" style="width: 100%"> 
   </div>
 </template>
 
 <script>
 import pageHeader from '../components/page-header'
 export default {
-  name: 'QRCode',
+  name: 'qRCode',
   data () {
     return {
       img: ''
@@ -20,6 +20,9 @@ export default {
     this.getImg()
   },
   methods: {
+    rightClick () {
+      window.open(this.img)
+    },
     getImg () {
       let uid = localStorage.getItem('uid')
       this.$axios.post(`${this.$store.state.G_HOST}/app/index/fximg`, this.$qs.stringify({uid: uid}))

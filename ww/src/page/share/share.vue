@@ -1,6 +1,9 @@
 
 <style lang="less" scoped>
 .share {
+  overflow: hidden;
+  height: 100%;
+  background-color: #fff;
   .list {
     width: 90%;
     margin: 0 auto;
@@ -45,7 +48,7 @@
 </style>
 
 <template>
-  <div class="share" style="background-color:#fff">
+  <div class="share">
     <!-- 头部 start -->
     <page-header :title="'分享'" :bgcolor="'#44c125'"></page-header>
     <!-- 头部 end -->
@@ -53,31 +56,31 @@
     <div class="main">
       <!-- <div></div> -->
       <div class="list" @click="$router.push({path: '/QRCode'})">
-        <span><img class="ico" src="../../../static/img/user-img.jpg"></span>
+        <span><img class="ico" src="../../../static/img/erweima.png"></span>
         分享二维码图片
         <div class="right">
           <img class="arrows" src="../../../static/img/mgmt-arrow-big.png" alt="">
         </div>
       </div>
 
-      <div class="list" @click="$router.push({path: '/'})">
+      <!-- <div class="list" @click="$router.push({path: '/'})">
         <span><img class="ico" src="../../../static/img/user-img.jpg"></span>
         亿融朋友圈
         <div class="right">
           <img class="arrows" src="../../../static/img/mgmt-arrow-big.png" alt="">
         </div>
-      </div>
+      </div> -->
 
-      <div class="list" @click="$router.push({path: '/'})">
-        <span><img class="ico" src="../../../static/img/user-img.jpg"></span>
+      <!-- <div class="list" @click="$router.push({path: '/'})">
+        <span><img class="ico" src="../../../static/img/weixin.png"></span>
         分享朋友圈
         <div class="right">
           <img class="arrows" src="../../../static/img/mgmt-arrow-big.png" alt="">
         </div>
-      </div>
+      </div> -->
 
       <div class="list" @click="$router.push({path: '/register'})">
-        <span><img class="ico" src="../../../static/img/user-img.jpg"></span>
+        <span><img class="ico" src="../../../static/img/register.png"></span>
         面对面开通账号
         <div class="right">
           <img class="arrows" src="../../../static/img/mgmt-arrow-big.png" alt="">
@@ -86,10 +89,9 @@
     </div>
 
 
-    <yd-tabbar :fixed="true">
+    <!-- <yd-tabbar :fixed="true">
         <yd-tabbar-item title="首页" link="/home">
-        <yd-icon name="home" slot="icon" size=".6rem"></yd-icon>
-            <!-- <yd-icon name="home" slot="icon" size="0.54rem" active="true"></yd-icon> -->
+          <yd-icon name="home" slot="icon" size=".6rem"></yd-icon>
         </yd-tabbar-item>
         <yd-tabbar-item title="分享" link="/share" active>
           <yd-icon name="share3" slot="icon" size="0.54rem"></yd-icon>
@@ -100,7 +102,7 @@
         <yd-tabbar-item title="个人中心" link="/personalCenter">
             <yd-icon name="ucenter-outline" slot="icon" size="0.54rem"></yd-icon>
         </yd-tabbar-item>
-    </yd-tabbar>
+    </yd-tabbar> -->
   </div>
 </template>
 

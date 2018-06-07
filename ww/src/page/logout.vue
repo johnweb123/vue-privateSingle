@@ -1,7 +1,7 @@
 <style lang="less" scoped>
 .btn {
   width: 96%;
-  margin: 10.5rem auto;
+  margin: 6.5rem auto 0;
 }
 </style>
 

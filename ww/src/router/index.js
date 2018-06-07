@@ -22,12 +22,13 @@ const register = resolve => require(['@/page/register.vue'], resolve)
 const articleDetails = resolve => require(['@/page/components/articleDetails.vue'], resolve)
 const upgradeUser = resolve => require(['@/page/personalCenter/upgradeUser.vue'], resolve)
 const commissionDetails = resolve => require(['@/page/personalCenter/commissionDetails.vue'], resolve)
-const erweima = resolve => require(['@/page/personalCenter/erweima.vue'], resolve)
+const qRCode = resolve => require(['@/page/personalCenter/qRCode.vue'], resolve)
 const findPassword = resolve => require(['@/page/findPassword.vue'], resolve)
 const QRCode = resolve => require(['@/page/share/QRCode.vue'], resolve)
 
 // Adair
 const generalize = resolve => require(['@/page/personalCenter/generalize.vue'], resolve)
+const container = resolve => require(['@/page/container.vue'], resolve)
 
 Vue.use(Router)
 
@@ -39,36 +40,43 @@ export default new Router({
       component: login
     },
     {
-      path: '/home',
-      name: 'home',
-      component: home,
-      meta: {
-        requiresAuth: true  //  添加该字段,表示进入这个路由是需要登录权限的
-      }
-    },
-    {
-      path: '/share',
-      name: 'share',
-      component: share,
-      meta: {
-        requiresAuth: true  //  添加该字段,表示进入这个路由是需要登录权限的
-      }
-    },
-    {
-      path: '/message',
-      name: 'message',
-      component: message,
-      meta: {
-        requiresAuth: true  //  添加该字段,表示进入这个路由是需要登录权限的
-      }
-    },
-    {
-      path: '/personalCenter',
-      name: 'personalCenter',
-      component: personalCenter,
-      meta: {
-        requiresAuth: true  //  添加该字段,表示进入这个路由是需要登录权限的
-      }
+      path: '/container',
+      name: 'container',
+      component: container,
+      children: [
+        {
+          path: 'home',
+          name: 'home',
+          component: home,
+          meta: {
+            requiresAuth: true  //  添加该字段,表示进入这个路由是需要登录权限的
+          }
+        },
+        {
+          path: 'share',
+          name: 'share',
+          component: share,
+          meta: {
+            requiresAuth: true  //  添加该字段,表示进入这个路由是需要登录权限的
+          }
+        },
+        {
+          path: 'message',
+          name: 'message',
+          component: message,
+          meta: {
+            requiresAuth: true  //  添加该字段,表示进入这个路由是需要登录权限的
+          }
+        },
+        {
+          path: 'personalCenter',
+          name: 'personalCenter',
+          component: personalCenter,
+          meta: {
+            requiresAuth: true  //  添加该字段,表示进入这个路由是需要登录权限的
+          }
+        }
+      ]
     },
     {
       path: '*',
@@ -156,9 +164,9 @@ export default new Router({
       component: upgradeUser
     },
     {
-      path: '/erweima',
-      name: 'erweima',
-      component: erweima
+      path: '/qRCode',
+      name: 'qRCode',
+      component: qRCode
     },
     {
       path: '/findPassword',

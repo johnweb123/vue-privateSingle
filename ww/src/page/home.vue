@@ -1,5 +1,5 @@
 <template>
-  <div class="hd">
+  <div class="home">
     <!-- 首页轮播 -->
     <yd-slider autoplay="3000" style="height:130px">
         <yd-slider-item v-for="(item, key) in banner" :key="key">
@@ -57,7 +57,7 @@
     </yd-tab>
 
     <!-- 底部 -->
-    <yd-tabbar :fixed="true">
+    <!-- <yd-tabbar :fixed="true">
         <yd-tabbar-item title="首页" link="/home" active>
           <yd-icon name="home" slot="icon" size="0.54rem"></yd-icon>
         </yd-tabbar-item>
@@ -70,7 +70,7 @@
         <yd-tabbar-item title="个人中心" link="/personalCenter">
             <yd-icon name="ucenter-outline" slot="icon" size="0.54rem"></yd-icon>
         </yd-tabbar-item>
-    </yd-tabbar>
+    </yd-tabbar> -->
   </div>
 </template>
 
@@ -113,5 +113,7 @@ export default {
   .notive {
     padding-left: 0.4rem
   }
-
+  .home {
+      margin-top: -1rem;
+  }
 </style>

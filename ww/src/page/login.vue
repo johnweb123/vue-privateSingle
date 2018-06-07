@@ -1,5 +1,5 @@
 <template>
-  <div class="hd">
+  <div>
 
     <!-- logo -->
     <img class="login" src="../../static/img/logo.png" alt="">
@@ -37,8 +37,8 @@
 export default {
   data () {
     return {
-      appphone: '',
-      apppassword: ''
+      appphone: '15839595305',
+      apppassword: '110'
     }
   },
   created () {
@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     log () {
-      this.$router.push({path: '/home'})
+      this.$router.push({path: '/container/home'})
     },
     greet () {
       // /* eslint-disable  */
@@ -65,7 +65,7 @@ export default {
           if (result.data.code == 1) {
              localStorage.setItem('uid', result.data.data.user_id)
              localStorage.setItem('token', '123465798')
-             this.$router.push({path:'/home'})
+             this.log()
           } else {
             return this.openAlert(result.data.message)
           }

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <transition name="slide-left" mode="out-in">
+    <transition name="slide-left" mode='out-in'>
       <router-view class="child-view"></router-view>
     </transition>
   </div>
@@ -14,10 +14,30 @@ export default {
     return {
       transitionName: 'slide-left'
     }
-  }
-  // components: {
-  //   leftNav
-  // }
+  },
+  watch: {
+      '$route' (to, from) {
+        if (from.query.key) {
+          if (to.query.key > from.query.key) {
+            this.transitionName = 'slide-left'
+          } else {
+            this.transitionName = 'slide-right'
+          }
+        } else {
+          this.transitionName = 'slide-left'
+        }
+        // cnzz
+        if (window._czc) {
+          let location = window.location
+          let contentUrl = location.pathname + location.hash
+          let refererUrl = '/'
+          // console.log('location.hash:' + location.hash)
+          // window._czc.push(['_setCustomVar', '管理中心总经理', 'LB20003']) // name
+          window._czc.push(['_trackPageview', contentUrl, refererUrl])
+        }
+        // https://edu.aliyun.com/a/65756
+      }
+    }
 }
 </script>
 
@@ -34,22 +54,28 @@ export default {
     /*transition: all .1s cubic-bezier(.55,0,.1,1);*/
     // transition: transform .3s ease-out;
     background-color: #f7f7f7;
-    overflow-x: hidden;
+    // overflow-x: hidden;
     margin-top: 1rem;
   }
-  .slide-left-enter, .slide-right-leave-active {
+  .slide-left-enter, .slide-left-leave-active {
+    transition: all .5s;
+    // transform: translateX(-100%)
     opacity: 0;
-    /*-webkit-transform: translate(30px, 0);*/
-    /*transform: translate(30px, 0);*/
-    transform: translateX(100%);
-    /*transform: scale(1.1);*/
   }
-  .slide-left-leave-active, .slide-right-enter {
+  .slide-left-enter-active, .slide-left-leave {
     opacity: 1;
-    /*transform: scale(1);*/
-    /*-webkit-transform: translate(-30px, 0);*/
-    /*transform: translate(-30px, 0);*/
-    transform: translateX(-100%);
-    transition: all 0.5s;
+    // transform: translateX(100%)
+  }
+
+
+
+  .slide-right-enter, .slide-right-leave-active {
+    transition: all .3 s;
+    opacity: 0;
+    transform: translateX(-100%)
+  }
+  .slide-right-enter-active, .slide-right-leave {
+    opacity: 1;
+    transform: translateX(100%)    
   }
 </style>

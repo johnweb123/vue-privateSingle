@@ -17,6 +17,11 @@ Vue.prototype.$qs = qs
 Vue.config.productionTip = false
 Vue.use(YDUI)
 
+// const FastClick = require('fastclick')
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   FastClick.attach(document.body)
+// }, false)
 // 创建一个axios实例
 const instance = axios.create()
 axios.interceptors.request.use = instance.interceptors.request.use

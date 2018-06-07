@@ -71,8 +71,8 @@
       >p.recommend {
         font-size: 0.24rem;
         img {
-          width: 24px;
-          height: 24px;
+          width: .4rem;
+          height: .4rem;
           vertical-align: middle;
           margin-left: 6px;
         }
@@ -113,7 +113,7 @@
 
 
 <template>
-  <div>
+  <div class="hd">
     <!-- 头部 start -->
     <page-header :title="'个人中心'" :rightIcon="'setting'" :bgcolor="'#44c125'" @page-right-click="setting()"></page-header>
     <!-- 头部 end -->
@@ -147,7 +147,7 @@
         </div>
 
         <p>[会员等级]: {{ userInfo.user.levelname }}</p>
-        <p class="recommend">推荐人：{{ userInfo.parent.nickname }}<a :href="`tel:${userInfo.parent.appphone}`"><img src="../../../static/img/personalCenter/min.png" alt=""></a></p>
+        <p class="recommend">推荐人：{{ userInfo.parent.nickname }}<a :href="`tel:${userInfo.parent.appphone}`"><img src="../../../static/img/phone.png" alt=""></a></p>
       </div>
 
       <div class="wallet" @click="$router.push({path:'/myWallet'})">
@@ -174,10 +174,9 @@
 
 
     <!-- 底部 start -->
-    <yd-tabbar :fixed="true">
+    <!-- <yd-tabbar :fixed="true">
         <yd-tabbar-item title="首页" link="/home">
           <yd-icon name="home" slot="icon" size=".6rem"></yd-icon>
-            <!-- <yd-icon name="home" slot="icon" size="0.54rem" active="true"></yd-icon> -->
         </yd-tabbar-item>
         <yd-tabbar-item title="分享" link="/share">
           <yd-icon name="share3" slot="icon" size="0.54rem"></yd-icon>
@@ -188,7 +187,7 @@
         <yd-tabbar-item title="个人中心" link="/personalCenter" active>
             <yd-icon name="ucenter-outline" slot="icon" size="0.54rem"></yd-icon>
         </yd-tabbar-item>
-    </yd-tabbar>
+    </yd-tabbar> -->
     <!-- 底部 end -->
   </div>
 </template>
@@ -199,8 +198,8 @@ export default {
   data () {
     return {
       userInfo: {
-        money: {
           daishenhe: '',
+        money: {
           yitixian: '',
           yuee: ''
         },
@@ -218,13 +217,13 @@ export default {
       },
       imgfrist: '../../../static/img/personalCenter/',
       allList: [
-        {img: "upgrade.png", text: '代理升级', link: 'upgradeUser'},
-        {img: "friends.png", text: '我的好友', link: 'listFriends'},
-        {img: "mydata.png", text: '我的资料', link: 'myData'},
-        {img: "showRecords.png", text: '提现记录', link: 'showRecords'},
-        {img: "incomeDetails.png", text: '收入明细', link: 'incomeDetails'},
-        {img: "generalize.png", text: '蚂蚁地推', link: 'generalize'},
-        {img: "service.png", text: '联系客服', link: 'article/?type=lxkf'}
+        {img: "upgrade.png", text: '代理升级', link: '/upgradeUser'},
+        {img: "friends.png", text: '我的好友', link: '/listFriends'},
+        {img: "mydata.png", text: '我的资料', link: '/myData'},
+        {img: "showRecords.png", text: '提现记录', link: '/showRecords'},
+        {img: "incomeDetails.png", text: '收入明细', link: '/incomeDetails'},
+        {img: "generalize.png", text: '亿客地推', link: '/generalize'},
+        {img: "service.png", text: '联系客服', link: '/article/?type=lxkf'}
       ]
     }
   },

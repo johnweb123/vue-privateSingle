@@ -8,7 +8,7 @@
     </div>
 
     <div class='promote'>
-      <span @click="erweima">立即推广</span>
+      <span @click="qRCode">立即推广</span>
     </div>
   </div>
 </template>
@@ -36,8 +36,8 @@ export default {
           this.data = result.data.data
         })
     },
-    erweima () {
-      this.$router.push({path:'/erweima', query: {id: this.id}})
+    qRCode () {
+      this.$router.push({path:'/qRCode', query: {id: this.id}})
     }
   }
 }
