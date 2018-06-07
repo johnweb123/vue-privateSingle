@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="hd">
     <!-- 首页轮播 -->
     <yd-slider autoplay="3000" style="height:130px">
         <yd-slider-item v-for="(item, key) in banner" :key="key">
             <router-link :to="item.url">
-                <img :src="item.pic">
+                <img :src="item.pic" style="height:130px">
             </router-link>
         </yd-slider-item>
     </yd-slider>
@@ -64,7 +64,7 @@
         <yd-tabbar-item title="分享" link="/share">
           <yd-icon name="share3" slot="icon" size="0.54rem"></yd-icon>
         </yd-tabbar-item>
-        <yd-tabbar-item title="消息" link="/message">
+        <yd-tabbar-item title="资讯" link="/message">
             <yd-icon name="order" slot="icon" size="0.54rem"></yd-icon>
         </yd-tabbar-item>
         <yd-tabbar-item title="个人中心" link="/personalCenter">

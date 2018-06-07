@@ -23,6 +23,8 @@ const articleDetails = resolve => require(['@/page/components/articleDetails.vue
 const upgradeUser = resolve => require(['@/page/personalCenter/upgradeUser.vue'], resolve)
 const commissionDetails = resolve => require(['@/page/personalCenter/commissionDetails.vue'], resolve)
 const erweima = resolve => require(['@/page/personalCenter/erweima.vue'], resolve)
+const findPassword = resolve => require(['@/page/findPassword.vue'], resolve)
+const QRCode = resolve => require(['@/page/share/QRCode.vue'], resolve)
 
 // Adair
 const generalize = resolve => require(['@/page/personalCenter/generalize.vue'], resolve)
@@ -157,6 +159,17 @@ export default new Router({
       path: '/erweima',
       name: 'erweima',
       component: erweima
+    },
+    {
+      path: '/findPassword',
+      name: 'findPassword',
+      component: findPassword
+    },
+    //   二维码页面
+    {
+      path: '/QRCode',
+      name: 'QRCode',
+      component: QRCode
     }
   ]
 })

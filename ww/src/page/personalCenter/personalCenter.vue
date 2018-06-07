@@ -1,7 +1,5 @@
 <style lang="less" scoped>
   @import '../../less/_var.less';
-  .personalCenter {
-
   .main {
     .user-info {
       background-color: @color;
@@ -111,13 +109,11 @@
       }
     }
   }
-
-}
 </style>
 
 
 <template>
-  <div class="personalCenter">
+  <div>
     <!-- 头部 start -->
     <page-header :title="'个人中心'" :rightIcon="'setting'" :bgcolor="'#44c125'" @page-right-click="setting()"></page-header>
     <!-- 头部 end -->
@@ -151,7 +147,7 @@
         </div>
 
         <p>[会员等级]: {{ userInfo.user.levelname }}</p>
-        <p class="recommend">推荐人：{{ userInfo.parent.nickname }}<a :href="`${userInfo.parent.appphone}`"><img src="../../../static/img/personalCenter/min.png" alt=""></a></p>
+        <p class="recommend">推荐人：{{ userInfo.parent.nickname }}<a :href="`tel:${userInfo.parent.appphone}`"><img src="../../../static/img/personalCenter/min.png" alt=""></a></p>
       </div>
 
       <div class="wallet" @click="$router.push({path:'/myWallet'})">
@@ -186,7 +182,7 @@
         <yd-tabbar-item title="分享" link="/share">
           <yd-icon name="share3" slot="icon" size="0.54rem"></yd-icon>
         </yd-tabbar-item>
-        <yd-tabbar-item title="消息" link="/message">
+        <yd-tabbar-item title="资讯" link="/message">
             <yd-icon name="order" slot="icon" size="0.54rem"></yd-icon>
         </yd-tabbar-item>
         <yd-tabbar-item title="个人中心" link="/personalCenter" active>
@@ -200,19 +196,35 @@
 <script>
 import pageHeader from '../components/page-header.vue'
 export default {
-  name: 'personalCenter',
   data () {
     return {
-      userInfo: {},
+      userInfo: {
+        money: {
+          daishenhe: '',
+          yitixian: '',
+          yuee: ''
+        },
+        parent: {
+          appphone: '',
+          nickname: ''
+        },
+        user: {
+          appphone: '',
+          headimg: '',
+          levelname: '',
+          money: '',
+          parent1: ''
+        }
+      },
       imgfrist: '../../../static/img/personalCenter/',
       allList: [
-        {img: "upgrade.png", text: '代理升级', link: '/home'},
+        {img: "upgrade.png", text: '代理升级', link: 'upgradeUser'},
         {img: "friends.png", text: '我的好友', link: 'listFriends'},
         {img: "mydata.png", text: '我的资料', link: 'myData'},
         {img: "showRecords.png", text: '提现记录', link: 'showRecords'},
         {img: "incomeDetails.png", text: '收入明细', link: 'incomeDetails'},
         {img: "generalize.png", text: '蚂蚁地推', link: 'generalize'},
-        {img: "service.png", text: '联系客服', link: '/article/?type=lxkf'}
+        {img: "service.png", text: '联系客服', link: 'article/?type=lxkf'}
       ]
     }
   },
@@ -232,7 +244,9 @@ export default {
       this.$axios.post(`${this.$store.state.G_HOST}/app/income/myadmin`, this.$qs.stringify({uid: 918}))
         .then((res) => {
           if (res.status === 200 && res.data.code === 1) {
-            vm.userInfo = res.data.data
+            vm.$nextTick(() => {
+              vm.userInfo = res.data.data
+            })
           }
         }, res => {
         })

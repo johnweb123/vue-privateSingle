@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <transition>
+    <transition name="slide-left" mode="out-in">
       <router-view class="child-view"></router-view>
     </transition>
   </div>
@@ -34,9 +34,11 @@ export default {
     /*transition: all .1s cubic-bezier(.55,0,.1,1);*/
     // transition: transform .3s ease-out;
     background-color: #f7f7f7;
+    overflow-x: hidden;
+    margin-top: 1rem;
   }
   .slide-left-enter, .slide-right-leave-active {
-    opacity: 1;
+    opacity: 0;
     /*-webkit-transform: translate(30px, 0);*/
     /*transform: translate(30px, 0);*/
     transform: translateX(100%);
@@ -48,5 +50,6 @@ export default {
     /*-webkit-transform: translate(-30px, 0);*/
     /*transform: translate(-30px, 0);*/
     transform: translateX(-100%);
+    transition: all 0.5s;
   }
 </style>

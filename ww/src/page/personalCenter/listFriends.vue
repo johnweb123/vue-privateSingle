@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="hd">
     <!-- 头部 -->
     <yd-navbar title="我的会员">
         <span @click="$router.go(-1)" slot="left">

@@ -110,7 +110,6 @@ export default {
       this._getData()
     },
     commissionDetails (id) {
-      console.log(id)
       this.$router.push({path: '/commissionDetails', query: {id}})
     }
   }

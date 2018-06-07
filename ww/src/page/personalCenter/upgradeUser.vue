@@ -61,7 +61,6 @@ export default {
                 orderType,
                 orderName
               }
-              console.log(data)
           }
         }
       ],

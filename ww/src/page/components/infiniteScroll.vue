@@ -2,7 +2,7 @@
   <div>
     <yd-infinitescroll :callback="loadList" ref="infinitescrollDemo" class="margin-button1" :scroll-top="true">
       <yd-flexbox v-for="(item, index) in data" :key="index" class="conent" slot="list" @click.native="detail(item.id, item.title, item.conter)">
-          <div class="imgbox"><img src="../../../static/img/user.png"></div>
+          <div class="imgbox"><img :src="item.img"></div>
           <yd-flexbox-item class="subject">
             <p class="title">{{item.title}}</p>
             更新时间：{{timestampToTime(item.time)}} <br>
@@ -98,11 +98,12 @@ export default {
 <style lang="less">
     .imgbox {
     width: 18%;
-    height: 1rem;
+    height: 1.3rem;
 
     img {
       display: inline-block;
       width: 100%;
+      height: 100%;
     }
 
   }

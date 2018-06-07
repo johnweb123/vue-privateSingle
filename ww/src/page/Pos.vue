@@ -117,7 +117,6 @@ export default {
     del () {
       this.form.name++
       this.tableData.length = 8
-      console.log(this.tableData[1].name)
       // let url = 'adasd'
       // axios.get(url)
       //   .then((res) => {

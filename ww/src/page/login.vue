@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="hd">
 
     <!-- logo -->
     <img class="login" src="../../static/img/logo.png" alt="">
@@ -16,7 +16,19 @@
           </yd-cell-item>
       </yd-cell-group>
 
-    <yd-button size="large" type="primary" @click.native="greet">登录</yd-button>
+      <yd-flexbox>
+        <yd-flexbox-item>
+          <router-link to="/register" class="left">
+            注册账号
+          </router-link>
+        </yd-flexbox-item>
+        <yd-flexbox-item>
+          <router-link to="/findPassword" class="right">
+            忘记密码
+          </router-link>
+        </yd-flexbox-item>
+      </yd-flexbox>
+    <yd-button size="large" type="primary" @click.native="greet" style="width: 96%;margin: 1.5rem auto">登录</yd-button>
   </div>
 </template>
 
@@ -70,8 +82,17 @@ export default {
 <style>
     .login {
       display: block;
-      margin: 0 auto;
+      margin: 1rem auto;
       width: 2rem;
       height: 2rem
+    }
+    .left {
+      color: #04be02;
+      padding-left: .3rem;
+    }
+    .right {
+      float: right;
+      color: #04be02;
+      padding-right: .3rem;
     }
 </style>

@@ -52,7 +52,7 @@
 
     <div class="main">
       <!-- <div></div> -->
-      <div class="list" @click="$router.push({path: '/'})">
+      <div class="list" @click="$router.push({path: '/QRCode'})">
         <span><img class="ico" src="../../../static/img/user-img.jpg"></span>
         分享二维码图片
         <div class="right">
@@ -76,7 +76,7 @@
         </div>
       </div>
 
-      <div class="list" @click="$router.push({path: '/'})">
+      <div class="list" @click="$router.push({path: '/register'})">
         <span><img class="ico" src="../../../static/img/user-img.jpg"></span>
         面对面开通账号
         <div class="right">
@@ -94,7 +94,7 @@
         <yd-tabbar-item title="分享" link="/share" active>
           <yd-icon name="share3" slot="icon" size="0.54rem"></yd-icon>
         </yd-tabbar-item>
-        <yd-tabbar-item title="消息" link="/message">
+        <yd-tabbar-item title="资讯" link="/message">
             <yd-icon name="order" slot="icon" size="0.54rem"></yd-icon>
         </yd-tabbar-item>
         <yd-tabbar-item title="个人中心" link="/personalCenter">

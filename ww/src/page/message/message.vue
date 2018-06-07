@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="message hd">
     <!-- 选项卡 -->
     <yd-tab>
         <yd-tab-panel :label="item.title" v-for="(item, key) in tab" :key="key">
@@ -15,7 +15,7 @@
         <yd-tabbar-item title="分享" link="/share">
           <yd-icon name="share3" slot="icon" size="0.54rem"></yd-icon>
         </yd-tabbar-item>
-        <yd-tabbar-item title="消息" link="/message" active>
+        <yd-tabbar-item title="资讯" link="/message" active>
             <yd-icon name="order" slot="icon" size="0.54rem"></yd-icon>
         </yd-tabbar-item>
         <yd-tabbar-item title="个人中心" link="/personalCenter">
@@ -28,7 +28,7 @@
 <script>
 import Scroll from '../components/infiniteScroll'
 export default {
-  name: 'messge',
+  name: 'message',
   data () {
     return {
       tab: {}

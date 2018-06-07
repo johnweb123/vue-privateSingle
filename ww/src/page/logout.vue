@@ -1,9 +1,17 @@
+<style lang="less" scoped>
+.btn {
+  width: 96%;
+  margin: 10.5rem auto;
+}
+</style>
+
+
 <template>
   <div>
 
     <page-header :title="'设置'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'" :leftText="'返回'"></page-header> 
 
-    <yd-button size="large" @click.native="branckdown" type="primary">退出登录</yd-button>
+    <yd-button class="btn" size="large" @click.native="branckdown" type="hollow">退出登录</yd-button>
   </div>
 </template>
 
