@@ -13,7 +13,6 @@ import pageFooter from '@/page/components/page-footer'
 export default {
   components: { pageFooter },
   beforeRouterEnter (to, form, next) {
-    console.log(form)
   }
 }
 </script>
