@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <pageHeader :title="'忘记密码'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'"></pageHeader>
+    <pageHeader :title="'忘记密码'" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'"></pageHeader>
 
     <!-- findpassword -->
     <yd-cell-group>

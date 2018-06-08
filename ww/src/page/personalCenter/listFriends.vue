@@ -1,30 +1,32 @@
 <template>
-  <div class="hd">
-    <!-- 头部 -->
-    <yd-navbar title="我的会员">
-        <span @click="$router.go(-1)" slot="left">
-            <yd-navbar-back-icon></yd-navbar-back-icon>
-        </span>
-    </yd-navbar>
+  <div>
+    <div class="list-firend">
+      <!-- 头部 -->
+      <yd-navbar title="我的会员">
+          <span @click="$router.go(-1)" slot="left">
+              <yd-navbar-back-icon></yd-navbar-back-icon>
+          </span>
+      </yd-navbar>
 
-    <!-- 会员列表 -->
-    <yd-tab v-model="tab2" :callback="fn" :prevent-default="false" :item-click="itemClick">
-        <yd-tab-panel v-for="(item, key) in list" :label="item.status" :key="key">
-          <yd-list theme="4">
-            <yd-list-item v-for="(item, key) in data" :key="key">
-                <img slot="img" class="img-circle" src='../../../static/img/user.png'>
-                <span slot="title">姓名：{{item.true_name}} {{item.phone}}</span>
-                <yd-list-other slot="other">
-                    <div class="list">
-                        <span>UID：{{item.id}}</span>
-                        <div>关注时间：{{timestampToTime(item.create_time)}}</div>
-                        <div>微信号：{{item.weixinnum}}</div>
-                    </div>
-                </yd-list-other>
-            </yd-list-item>
-        </yd-list>
-        </yd-tab-panel>
-    </yd-tab>
+      <!-- 会员列表 -->
+      <yd-tab v-model="tab2" :callback="fn" :prevent-default="false" :item-click="itemClick">
+          <yd-tab-panel v-for="(item, key) in list" :label="item.status" :key="key">
+            <yd-list theme="4">
+              <yd-list-item v-for="(item, key) in data" :key="key">
+                  <img slot="img" class="img-circle" src='../../../static/img/user.png'>
+                  <span slot="title">姓名：{{item.true_name}} {{item.phone}}</span>
+                  <yd-list-other slot="other">
+                      <div class="list">
+                          <span>UID：{{item.id}}</span>
+                          <div>关注时间：{{timestampToTime(item.create_time)}}</div>
+                          <div>微信号：{{item.weixinnum}}</div>
+                      </div>
+                  </yd-list-other>
+              </yd-list-item>
+          </yd-list>
+          </yd-tab-panel>
+      </yd-tab>
+    </div>
   </div>
 </template>
 
@@ -100,5 +102,8 @@ export default {
   }
   .yd-list-theme4 .yd-list-item .yd-list-title {
     padding-top: .2rem;
+  }
+  .list-firend {
+    margin-top: -1rem;
   }
 </style>

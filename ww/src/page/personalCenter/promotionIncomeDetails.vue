@@ -1,6 +1,6 @@
 <template>
   <div>
-    <pageHeader :title="'推广收入明细'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'"></pageHeader>
+    <pageHeader :title="'推广收入明细'" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'"></pageHeader>
 
     <yd-infinitescroll :callback="loadList" ref="infinitescrollDemo">
       <yd-flexbox v-for="(item, index) in data" :key="index" class="conent" slot="list">

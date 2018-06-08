@@ -2,7 +2,7 @@
   <div>
     <!-- 头部信息 -->
 
-    <pageHeader :title="'收入明细'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'"></pageHeader>
+    <pageHeader :title="'收入明细'" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'"></pageHeader>
 
     <yd-cell-group>
         <yd-cell-item arrow href="/promotionIncomeDetails" type="link">

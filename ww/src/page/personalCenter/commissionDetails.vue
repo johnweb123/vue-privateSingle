@@ -1,10 +1,10 @@
 <template>
   <div>
 
-    <page-header :title="data.title" :bgcolor="'#44c125'" :leftIcon="'leftArrow'" :leftText="'返回'"></page-header> 
+    <page-header :title="data.title" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'" :leftText="'返回'"></page-header>
 
     <div v-html="data.remark" style="width:100%">
-      
+
     </div>
 
     <div class='promote'>
@@ -37,7 +37,7 @@ export default {
         })
     },
     qRCode () {
-      this.$router.push({path:'/qRCode', query: {id: this.id}})
+      this.$router.push({path:'/eweima', query: {id: this.id}})
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <pageHeader :title="'提现'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'"></pageHeader>
+    <pageHeader :title="'提现'" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'"></pageHeader>
 
     <div class="money">
       <yd-flexbox>
@@ -40,7 +40,7 @@
     <p class="ps">提现当天到账，感谢您的支持</p>
 
     <yd-button-group>
-        <yd-button size="large" type="primary" @click.native="_postData">立即提现</yd-button>
+        <yd-button size="large" @click.native="_postData" bgcolor="#53beb7" color="#fff">立即提现</yd-button>
     </yd-button-group>
   </div>
 </template>

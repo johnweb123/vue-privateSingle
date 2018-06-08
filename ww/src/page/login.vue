@@ -87,12 +87,12 @@ export default {
       height: 2rem
     }
     .left {
-      color: #04be02;
+      color: #53beb7;
       padding-left: .3rem;
     }
     .right {
       float: right;
-      color: #04be02;
+      color: #53beb7;
       padding-right: .3rem;
     }
 </style>

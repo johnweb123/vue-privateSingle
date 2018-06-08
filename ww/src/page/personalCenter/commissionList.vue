@@ -163,7 +163,7 @@ export default {
           flex: 1
         }
         .item-x {
-          color:#44c125;
+          color:#53beb7;
           overflow: hidden;
           text-overflow:ellipsis;
           white-space: nowrap;

@@ -115,7 +115,7 @@
 <template>
   <div class="hd">
     <!-- 头部 start -->
-    <page-header :title="'个人中心'" :rightIcon="'setting'" :bgcolor="'#44c125'" @page-right-click="setting()"></page-header>
+    <page-header :title="'个人中心'" :rightIcon="'setting'" :bgcolor="'#53beb7'" @page-right-click="setting()"></page-header>
     <!-- 头部 end -->
 
     <div class="main">

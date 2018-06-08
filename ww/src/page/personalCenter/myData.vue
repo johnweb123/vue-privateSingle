@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <pageHeader :title="'我的资料'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'"></pageHeader>
+    <pageHeader :title="'我的资料'" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'"></pageHeader>
     <!-- 我的资料 -->
     <yd-cell-group>
         <yd-cell-item>

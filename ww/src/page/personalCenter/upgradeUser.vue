@@ -1,6 +1,6 @@
 <template>
   <div>
-      <page-header :title="'升级会员'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'" :leftText="'返回'"></page-header>
+      <page-header :title="'升级会员'" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'" :leftText="'返回'"></page-header>
 
       <yd-slider autoplay="3000">
           <yd-slider-item>
