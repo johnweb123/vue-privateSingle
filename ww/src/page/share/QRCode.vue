@@ -1,5 +1,5 @@
 <template>
-  <div class="qRCode">
+  <div class="QRCode">
 
     <page-header :title="'扫码二维码'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'" :rightText="'保存'" @page-right-click="rightClick"></page-header>
 
@@ -10,7 +10,7 @@
 <script>
 import pageHeader from '../components/page-header'
 export default {
-  name: 'qRCode',
+  name: 'QRCode',
   data () {
     return {
       img: ''
