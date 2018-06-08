@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <page-header :title="'推广二维码'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'" :leftText="'返回'"></page-header> 
+    <page-header :title="'推广二维码'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'" :leftText="'返回'"></page-header>
 
 
     <div>
@@ -40,7 +40,7 @@ export default {
     copytxt () {
       let val = document.getElementById('copytxt')
       val.select();
-      document.execCommand("Copy");  
+      document.execCommand("Copy");
       this.toastNone()
     },
     toastNone() {

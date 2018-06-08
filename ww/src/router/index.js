@@ -22,7 +22,7 @@ const register = resolve => require(['@/page/register.vue'], resolve)
 const articleDetails = resolve => require(['@/page/components/articleDetails.vue'], resolve)
 const upgradeUser = resolve => require(['@/page/personalCenter/upgradeUser.vue'], resolve)
 const commissionDetails = resolve => require(['@/page/personalCenter/commissionDetails.vue'], resolve)
-const qRCode = resolve => require(['@/page/personalCenter/qRCode.vue'], resolve)
+const eweima = resolve => require(['@/page/personalCenter/eweima.vue'], resolve)
 const findPassword = resolve => require(['@/page/findPassword.vue'], resolve)
 const QRCode = resolve => require(['@/page/share/QRCode.vue'], resolve)
 
@@ -164,9 +164,9 @@ export default new Router({
       component: upgradeUser
     },
     {
-      path: '/qRCode',
-      name: 'qRCode',
-      component: qRCode
+      path: '/eweima',
+      name: 'eweima',
+      component: eweima
     },
     {
       path: '/findPassword',
