@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page-header :title="'注册账号'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'" :leftText="'返回'"></page-header> 
+    <page-header :title="'注册账号'" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'" :leftText="'返回'"></page-header>
     <!-- logo -->
     <img class="login" src="../../static/img/logo.png" alt="">
 
@@ -12,9 +12,9 @@
             <yd-input slot="right" v-model="appphone" ref="appphone" required :show-success-icon="false" :show-error-icon="false" regex="mobile" placeholder="请输入手机号码"></yd-input>
 
             <!-- ↓↓关键代码是这里↓↓ -->
-            <yd-sendcode slot="right" 
-                         v-model="start1" 
-                         @click.native="sendCode1" 
+            <yd-sendcode slot="right"
+                         v-model="start1"
+                         @click.native="sendCode1"
                          type="primary"
             ></yd-sendcode>
             <!-- ↑↑关键代码是这里↑↑ -->
@@ -39,7 +39,7 @@
           </yd-cell-item>
       </yd-cell-group>
 
-    <yd-button size="large" type="primary" @click.native="postData">注册</yd-button>
+    <yd-button size="large" type="primary" @click.native="postData" bgcolor="#53beb7" color="#fff">注册</yd-button>
   </div>
 </template>
 
@@ -65,7 +65,7 @@ export default {
     postData () {
       // /* eslint-disable  */
       let {appphone, apppassword, apprepassword, appcode, t_phone} = this
-      
+
       let postData = this.$qs.stringify({
         appphone,
         apppassword,
@@ -98,7 +98,7 @@ export default {
 
                 if (result.data.code == -1){
                     this.$dialog.loading.close();
-                   return this.openAlert(result.data.message) 
+                   return this.openAlert(result.data.message)
                 }
                 this.start1 = true;
                 this.$dialog.loading.close();

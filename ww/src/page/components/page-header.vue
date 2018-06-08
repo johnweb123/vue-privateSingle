@@ -1,7 +1,7 @@
 <style lang="less" scoped>
 //  去掉 顶部导航 border
   .navbar-bottom-line-color:after {
-    border-color: #44c125 !important;
+    border-color: #53beb7 !important;
   }
   .page-header {
     position: fixed;

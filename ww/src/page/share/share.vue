@@ -50,7 +50,7 @@
 <template>
   <div class="share">
     <!-- 头部 start -->
-    <page-header :title="'分享'" :bgcolor="'#44c125'"></page-header>
+    <page-header :title="'分享'" :bgcolor="'#53beb7'"></page-header>
     <!-- 头部 end -->
 
     <div class="main">

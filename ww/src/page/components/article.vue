@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <pageHeader :title="title" :bgcolor="'#44c125'" :leftIcon="'leftArrow'"></pageHeader>
+    <pageHeader :title="title" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'"></pageHeader>
 
     <div class="content">
       <p class="title">{{ title }}</p>

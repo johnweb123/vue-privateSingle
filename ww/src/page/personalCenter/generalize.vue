@@ -1,10 +1,10 @@
 <template>
   <div class="generalize">
 
-    <page-header :title="'亿客地推'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'" :leftText="'返回'"></page-header> 
+    <page-header :title="'亿客地推'" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'" :leftText="'返回'"></page-header> 
     <!-- 头部 end -->
 
-    <yd-tab v-model="tab2" active-color="#44c125">
+    <yd-tab v-model="tab2" active-color="#53beb7">
         <yd-tab-panel v-for="(item, index) in items" :label="item.label" :key="index">
           <!-- 佣金产品 start -->
           <div v-if="item.type === 'product'">

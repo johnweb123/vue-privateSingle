@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 头部信息 -->
-    <pageHeader :title="'已提金额'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'" :leftText="'返回'"></pageHeader> 
+    <pageHeader :title="'已提金额'" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'" :leftText="'返回'"></pageHeader> 
 
     <!-- 提现记录 -->
     <yd-infinitescroll :callback="loadList" ref="infinitescrollDemo">

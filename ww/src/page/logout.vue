@@ -9,7 +9,7 @@
 <template>
   <div>
 
-    <page-header :title="'设置'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'" :leftText="'返回'"></page-header> 
+    <page-header :title="'设置'" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'" :leftText="'返回'"></page-header> 
 
     <yd-button class="btn" size="large" @click.native="branckdown" type="hollow">退出登录</yd-button>
   </div>

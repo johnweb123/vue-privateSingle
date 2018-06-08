@@ -1,6 +1,6 @@
 <template>
   <div class="article-detail">
-     <pageHeader :title="'详情'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'"></pageHeader>
+     <pageHeader :title="'详情'" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'"></pageHeader>
 
     <div class="main">
       <h1>{{ data.title }}</h1>

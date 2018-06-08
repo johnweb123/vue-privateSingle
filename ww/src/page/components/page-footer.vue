@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <yd-tabbar :fixed="true">
+    <yd-tabbar :fixed="true" active-color="#53beb7">
         <yd-tabbar-item title="首页" link="/container/home" :active="type == 'home'" @click.native="clickTab('home')">
           <yd-icon name="home" slot="icon" size=".6rem"></yd-icon>
         </yd-tabbar-item>

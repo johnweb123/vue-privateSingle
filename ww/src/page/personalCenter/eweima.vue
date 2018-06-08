@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <page-header :title="'推广二维码'" :bgcolor="'#44c125'" :leftIcon="'leftArrow'" :leftText="'返回'"></page-header>
+    <page-header :title="'推广二维码'" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'" :leftText="'返回'"></page-header>
 
 
     <div>
