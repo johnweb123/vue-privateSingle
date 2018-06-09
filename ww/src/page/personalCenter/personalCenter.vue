@@ -33,6 +33,12 @@
 
         }
       }
+      .imgUpload {
+        opacity: 0;
+        position: absolute;
+        width: 45px;
+        height: 45px;
+      }
 
       .user-money {
         display: flex;
@@ -117,11 +123,11 @@
     <!-- 头部 start -->
     <page-header :title="'个人中心'" :rightIcon="'setting'" :bgcolor="'#53beb7'" @page-right-click="setting()"></page-header>
     <!-- 头部 end -->
-
     <div class="main">
       <div class="user-info">
         <div class="user-info-list">
           <img class="user-img" :src="userInfo.user.headimg">
+          <input type="file" class="imgUpload" ref="picture" @change="uploadPicture">
           <div class="user-account">
             <p>账号: {{ userInfo.user.appphone }}</p>
             <p>会员ID： {{ userInfo.user.id }}</p>
@@ -235,13 +241,53 @@ export default {
     this._getData()
   },
   methods: {
+    //   更换头像
+    uploadPicture () {
+      let file = this.$refs.picture.files[0]
+      let reader = new FileReader()
+      reader.addEventListener('load', () => {
+        let pic = reader.result
+        let uid = localStorage.getItem('uid')
+        this.$dialog.loading.open('很快加载好了')
+        this.$axios.post(`${this.$store.state.G_HOST}/app/income/mypic`, this.$qs.stringify({pic, uid}))
+          .then(result => {
+            this.$dialog.loading.close()
+            if (result.data.code === 1) {
+              this.$dialog.toast({
+                mes: '保存成功',
+                timeout: 1500,
+                icon: 'success'
+              })
+              setTimeout(() => {
+                this.userInfo.user.headimg = pic
+              }, 1500)
+            } else {
+              this.$dialog.toast({
+                mes: '保存失败！',
+                timeout: 1500,
+                icon: 'error'
+              })
+            }
+          })
+          .catch(() => {
+            this.$dialog.loading.close()
+            this.$dialog.toast({
+                mes: '网络错误，请稍后再试！',
+                timeout: 1500
+            })
+          })
+      })
+      if (file) {
+        reader.readAsDataURL(file)
+      }
+      console.log(file)
+    },
     setting () {
       this.$router.push('/logout')
     },
     _getData () {
       var vm = this
       let uid = localStorage.getItem('uid')
-      console.log(uid)
       this.$axios.post(`${this.$store.state.G_HOST}/app/income/myadmin`, this.$qs.stringify({uid}))
         .then((res) => {
           if (res.status === 200 && res.data.code === 1) {
