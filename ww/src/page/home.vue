@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <div class="112233" v-once="show"></div>
     <!-- 首页轮播 -->
     <yd-slider autoplay="3000" style="height:130px">
         <yd-slider-item v-for="(item, key) in banner" :key="key">
@@ -94,6 +95,7 @@ export default {
     this._getData()
   },
   methods: {
+      show () {},
       _getTab () {
         this.$axios.post(this.$store.state.G_HOST+'/app/mag/cate')
             .then(result => { this.tab = result.data.data})

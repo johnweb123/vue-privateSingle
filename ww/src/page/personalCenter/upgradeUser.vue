@@ -46,34 +46,43 @@ import pageHeader from '../components/page-header'
 export default {
   data () {
     return {
-      money: 198, //现价
+      money: '', //现价
       oldmoney: 598, //原价
       show1: false,
       myItems1: [
         {
           label: '支付宝',
           callback: (message) => { //调用支付接口
-              this.$dialog.toast({mes: '咔擦，此人太帅！'});
-              /* 注意： callback: function() {} 和 callback() {}  这样是无法正常使用当前this的 */
-              let data ={
-                aliPayInfo,
-                money,
-                orderType,
-                orderName
+          let uid = localStorage.getItem('uid')
+          this.$axios.post('http://m.jubao520.com/app/pay/wlevel', this.$qs.stringify({uid}))
+            .then(result => {
+              if (result.data.code == -1) {
+                return this.$dialog.toast({mes: '没有升级权限！'})
+              } else {
+                console.log(result.data)
               }
+              console.log(result.data)
+            })
+              /* 注意： callback: function() {} 和 callback() {}  这样是无法正常使用当前this的 */
+              
           }
         }
-      ],
-      orderName: '', //订单名称
-      aliPayInfo: '', //订单信息
-      orderType: 3 //支付线路
+      ]
     }
   },
   components: {
     pageHeader
   },
+  mounted () {
+    this._getMoney()
+  },
   methods: {
-
+    _getMoney () {
+      this.$axios.post('http://m.jubao520.com/app/pay/zpay')
+        .then(result => {
+          this.money = result.data.data
+        })
+    }
   }
 }
 </script>
