@@ -72,6 +72,11 @@
             <yd-icon name="ucenter-outline" slot="icon" size="0.54rem"></yd-icon>
         </yd-tabbar-item>
     </yd-tabbar> -->
+
+    <div class="mask-layer">
+      <div class="pop">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -116,6 +121,22 @@ export default {
     padding-left: 0.4rem
   }
   .home {
-      margin-top: -1rem;
+    margin-top: -1rem;
+  }
+  .mask-layer {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,.7);
+      top:0;
+      left: 0;
+      z-index: 101;
+      .pop {
+        width: 90%;
+        height: 10rem;
+        margin: 2rem auto 2rem;
+        background-color: #fff;
+
+      }
   }
 </style>
