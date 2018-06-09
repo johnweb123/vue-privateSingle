@@ -42,7 +42,7 @@
         items: [
             {label: '佣金产品', type: 'product'},
             {label: '客户列表', type: 'client-list'},
-            {label: '英雄排行榜', type: 'rank'},
+            {label: '亿客排行榜', type: 'rank'},
             {label: '常见问题', type: 'issue'}
         ]
       }

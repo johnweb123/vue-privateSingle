@@ -56,7 +56,7 @@ export default {
       this.$axios.post(this.$store.state.G_HOST+'/app/income/moneyrecord', this.$qs.stringify({uid, page: this.page}))
         .then(result => {
           if (result.data.data.length !== 0 && Array.isArray(result.data.data)) {
-            this.list = [...this.list, result.data.data]
+            this.list = [...this.list, ...result.data.data]
           }
           if (result.data.data.length < 10) {
               /* 所有数据加载完毕 */

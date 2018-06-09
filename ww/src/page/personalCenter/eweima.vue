@@ -6,8 +6,8 @@
 
     <div>
       <img :src="img" style="width:100%">
+      <input type="text" id="copytxt" v-model="url_short">
       <yd-button size="large" type="primary" @click.native="copytxt">点击复制链接</yd-button>
-      <input type="hidden" id="copytxt" v-model="url_short">
     </div>
   </div>
 </template>
@@ -52,3 +52,12 @@ export default {
   }
 }
 </script>
+
+<style>
+  #copytxt {
+    visibility: hidden;
+  }
+  .yd-btn-block {
+    margin-top: 0;
+  }
+</style>

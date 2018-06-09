@@ -37,8 +37,8 @@
 export default {
   data () {
     return {
-      appphone: '15839595305',
-      apppassword: '110'
+      appphone: '',
+      apppassword: ''
     }
   },
   created () {

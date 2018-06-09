@@ -27,7 +27,7 @@ export default {
           title: '请确认',
           mes: '确定退出吗？',
           opts: () => {
-            localStorage.clear()
+            window.localStorage.clear()
             this.$dialog.toast({mes: '退出成功', timeout: 1000});
             setTimeout( () => { this.$router.push({path: '/login'}) },1000)
           }

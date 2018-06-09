@@ -223,7 +223,8 @@ export default {
         {img: "showRecords.png", text: '提现记录', link: '/showRecords'},
         {img: "incomeDetails.png", text: '收入明细', link: '/incomeDetails'},
         {img: "generalize.png", text: '亿客地推', link: '/generalize'},
-        {img: "service.png", text: '联系客服', link: '/article/?type=lxkf'}
+        {img: "service.png", text: '联系客服', link: '/article/?type=lxkf'},
+        {img: "service.png", text: '常见说明', link: '/generalize'}
       ]
     }
   },
@@ -240,7 +241,8 @@ export default {
     _getData () {
       var vm = this
       let uid = localStorage.getItem('uid')
-      this.$axios.post(`${this.$store.state.G_HOST}/app/income/myadmin`, this.$qs.stringify({uid: 918}))
+      console.log(uid)
+      this.$axios.post(`${this.$store.state.G_HOST}/app/income/myadmin`, this.$qs.stringify({uid}))
         .then((res) => {
           if (res.status === 200 && res.data.code === 1) {
             vm.$nextTick(() => {

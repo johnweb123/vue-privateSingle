@@ -5,9 +5,10 @@
       </div>
 
       <img class="advertising-img" src="http://static.ydcss.com/uploads/ydui/1.jpg">
-
+   
       <div>
-        <yd-infinitescroll :callback="loadList" ref="infinitescrollDemo">
+        <div v-if="this.dataList.length == 0" style="text-align: center;line-height: 1rem">暂时没有数据</div>
+        <yd-infinitescroll v-else :callback="loadList" ref="infinitescrollDemo">
             <div class="product-list" @click="commissionDetails(item.id)" v-for="(item,key) in dataList" :key="key" slot="list" theme="1">
                 <div class="list-item">
                     <img class="list-img" :src="item.pic">
@@ -107,6 +108,7 @@ export default {
     select (item) {
       this.selected = item.id
       this.cate_id = item.id
+      this.page = 1
       this._getData()
     },
     commissionDetails (id) {
@@ -131,7 +133,6 @@ export default {
         color: #fff !important;
       }
       .yd-btn {
-        color: #666;
         font-size: .2rem;
         background-color: #ded7d7;
         overflow: hidden;

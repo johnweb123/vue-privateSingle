@@ -28,7 +28,7 @@
       <span slot="right" v-if="rightIcon === 'rightArrow'" @click="rightClick">
           <yd-navbar-next-icon></yd-navbar-next-icon>
       </span>
-      <span slot="right" v-if="rightText" style="color:#fff" @click="rightClick">{{ rightText }}</span>
+      <a slot="right" v-if="rightText" style="color:#fff" @click="rightClick">{{ rightText }}</a>
       <span slot="right" v-else-if="rightIcon" @click="rightClick">
           <yd-icon :name="rightIcon" size="25px" color="#fff"></yd-icon>
       </span>
