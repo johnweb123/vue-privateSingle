@@ -1,8 +1,8 @@
-<style lang="less">
+<style lang="less" scoped>
     .conent {
       padding: 0 .3rem;
       height: 1.5rem;
-      border-bottom: 1px solid #d4cfcf
+      border-bottom: 1px solid#d4cfcf;
     }
     .conter {
       text-overflow:ellipsis;overflow:hidden;white-space:nowrap;padding-top: .2rem;font-size: .3rem;

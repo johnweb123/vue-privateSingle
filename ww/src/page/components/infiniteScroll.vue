@@ -95,7 +95,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
     .imgbox {
     width: 18%;
     height: 1.3rem;
@@ -108,7 +108,7 @@ export default {
 
   }
 
-  .subject {
+   .subject {
       padding: 0.3rem 0.1rem;
       line-height: .4rem;
       width: 21%;

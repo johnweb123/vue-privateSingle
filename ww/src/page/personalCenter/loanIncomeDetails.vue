@@ -79,7 +79,7 @@ export default {
         /* 单次请求数据完毕 */
         this.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.finishLoad');
       })
-    }  
+    }
   }
 }
 </script>
@@ -89,7 +89,7 @@ export default {
   .imgbox {
     width: 18%;
     height: 1.3rem;
-  
+
 
     img {
       display: inline-block;

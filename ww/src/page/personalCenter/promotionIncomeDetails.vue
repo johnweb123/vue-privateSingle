@@ -79,7 +79,7 @@ export default {
           /* 单次请求数据完毕 */
           this.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.finishLoad');
       })
-    }  
+    }
   }
 }
 </script>
