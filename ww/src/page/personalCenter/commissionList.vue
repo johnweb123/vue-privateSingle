@@ -4,7 +4,7 @@
         <yd-button :class="{'btn': selected === item.id}" v-for="(item, index) in productList" :key="index" @click.native="select(item)">{{item.name}}</yd-button>
       </div>
 
-      <img class="advertising-img" src="http://static.ydcss.com/uploads/ydui/1.jpg">
+      <img class="advertising-img" src="../../../static/img/yike.png">
    
       <div>
         <div v-if="this.dataList.length == 0" style="text-align: center;line-height: 1rem">暂时没有数据</div>

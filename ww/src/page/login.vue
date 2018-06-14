@@ -65,6 +65,7 @@ export default {
           if (result.data.code == 1) {
              localStorage.setItem('uid', result.data.data.user_id)
              localStorage.setItem('token', '123465798')
+             sessionStorage.setItem('pop', true)
              this.log()
           } else {
             return this.openAlert(result.data.message)

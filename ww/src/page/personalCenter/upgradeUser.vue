@@ -35,8 +35,11 @@
            原价: {{oldmoney}}  现价：<span style="color:red"> {{money}} </span>
            <yd-button @click.native="show1 = true" size="large">购买</yd-button>
          </div>
-    
         <yd-actionsheet :items="myItems1" v-model="show1" cancel="取消"></yd-actionsheet>
+        <form :action="`${this.$store.state.G_HOST}/app/pay/fupay`" method="post" id="test_form">
+          <input type="hidden" name="money" v-model="money" />
+          <input type="hidden" name="uid" v-model="uid" />
+      </form>
       </div>
   </div>
 </template>
@@ -49,22 +52,36 @@ export default {
       money: '', //现价
       oldmoney: 598, //原价
       show1: false,
+      uid: '',
       myItems1: [
         {
-          label: '支付宝',
-          callback: (message) => { //调用支付接口
-          let uid = localStorage.getItem('uid')
-          this.$axios.post('http://m.jubao520.com/app/pay/wlevel', this.$qs.stringify({uid}))
+          label: '支付宝支付',
+          callback: (message) => { //调用支付宝支付接口
+          this.uid = localStorage.getItem('uid')
+          this.$axios.post(`${this.$store.state.G_HOST}/app/pay/wlevel`, this.$qs.stringify({uid: this.uid}))
             .then(result => {
               if (result.data.code == -1) {
-                return this.$dialog.toast({mes: '没有升级权限！'})
+                return this.$dialog.toast({mes: result.data.message})
               } else {
-                console.log(result.data)
+                var form = document.getElementById('test_form');
+                form.submit()
               }
-              console.log(result.data)
             })
               /* 注意： callback: function() {} 和 callback() {}  这样是无法正常使用当前this的 */
-              
+          }
+        },
+        {
+          label: '微信支付',
+          callback: (message) => { //调用微信支付接口
+          this.uid = localStorage.getItem('uid')
+          this.$axios.post(`${this.$store.state.G_HOST}/app/pay/wlevel`, this.$qs.stringify({uid: this.uid}))
+            .then(result => {
+              if (result.data.code == -1) {
+                return this.$dialog.toast({mes: result.data.message})
+              } else {
+                window.location.href = `${this.$store.state.G_HOST}/app/pay/wx_pay?uid=${this.uid}`
+              }
+            })
           }
         }
       ]
@@ -78,7 +95,7 @@ export default {
   },
   methods: {
     _getMoney () {
-      this.$axios.post('http://m.jubao520.com/app/pay/zpay')
+      this.$axios.post(`${this.$store.state.G_HOST}/app/pay/zpay`)
         .then(result => {
           this.money = result.data.data
         })

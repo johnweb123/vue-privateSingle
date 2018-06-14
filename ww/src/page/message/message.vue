@@ -7,20 +7,6 @@
         </yd-tab-panel>
     </yd-tab>
 
-    <!-- <yd-tabbar :fixed="true">
-        <yd-tabbar-item title="首页" link="/home">
-        <yd-icon name="home" slot="icon" size=".6rem"></yd-icon>
-        </yd-tabbar-item>
-        <yd-tabbar-item title="分享" link="/share">
-          <yd-icon name="share3" slot="icon" size="0.54rem"></yd-icon>
-        </yd-tabbar-item>
-        <yd-tabbar-item title="资讯" link="/message" active>
-            <yd-icon name="order" slot="icon" size="0.54rem"></yd-icon>
-        </yd-tabbar-item>
-        <yd-tabbar-item title="个人中心" link="/personalCenter">
-            <yd-icon name="ucenter-outline" slot="icon" size="0.54rem"></yd-icon>
-        </yd-tabbar-item>
-    </yd-tabbar> -->
   </div>
 </template>
 

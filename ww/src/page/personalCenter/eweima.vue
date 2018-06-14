@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <page-header :title="'推广二维码'" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'" :leftText="'返回'"></page-header>
+    <page-header :title="'推广二维码'" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'" :leftText="'返回'" rightText="保存" :href="img"></page-header>
 
 
     <div>
@@ -55,7 +55,8 @@ export default {
 
 <style>
   #copytxt {
-    visibility: hidden;
+    opacity: 0;
+    height: 8px;
   }
   .yd-btn-block {
     margin-top: 0;

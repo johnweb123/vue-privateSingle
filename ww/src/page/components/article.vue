@@ -6,7 +6,7 @@
     <div class="content">
       <p class="title">{{ title }}</p>
     <p> {{ timestampToTime(time) }}</p>
-    <div class="text">{{ conter }}</div>
+    <div class="text" v-html="conter"></div>
     </div>
   </div>
 </template>
@@ -63,8 +63,4 @@ export default {
     background-color: #fff
   }
 
-  .text {
-    line-height: .8rem;
-    text-indent:2em
-  }
 </style>

@@ -121,7 +121,7 @@
 <template>
   <div class="hd">
     <!-- 头部 start -->
-    <page-header :title="'个人中心'" :rightIcon="'setting'" :bgcolor="'#53beb7'" @page-right-click="setting()"></page-header>
+    <page-header :title="'个人中心'" :rightIcon="'setting'" :bgcolor="'#53beb7'" @page-right-click="setting"></page-header>
     <!-- 头部 end -->
     <div class="main">
       <div class="user-info">
@@ -177,24 +177,6 @@
       </yd-grids-group>
     </div>
 
-
-
-    <!-- 底部 start -->
-    <!-- <yd-tabbar :fixed="true">
-        <yd-tabbar-item title="首页" link="/home">
-          <yd-icon name="home" slot="icon" size=".6rem"></yd-icon>
-        </yd-tabbar-item>
-        <yd-tabbar-item title="分享" link="/share">
-          <yd-icon name="share3" slot="icon" size="0.54rem"></yd-icon>
-        </yd-tabbar-item>
-        <yd-tabbar-item title="资讯" link="/message">
-            <yd-icon name="order" slot="icon" size="0.54rem"></yd-icon>
-        </yd-tabbar-item>
-        <yd-tabbar-item title="个人中心" link="/personalCenter" active>
-            <yd-icon name="ucenter-outline" slot="icon" size="0.54rem"></yd-icon>
-        </yd-tabbar-item>
-    </yd-tabbar> -->
-    <!-- 底部 end -->
   </div>
 </template>
 
@@ -228,9 +210,9 @@ export default {
         {img: "mydata.png", text: '我的资料', link: '/myData'},
         {img: "showRecords.png", text: '提现记录', link: '/showRecords'},
         {img: "incomeDetails.png", text: '收入明细', link: '/incomeDetails'},
-        {img: "generalize.png", text: '亿客地推', link: '/generalize'},
+        {img: "generalize.png", text: '小亿推客', link: '/generalize'},
         {img: "service.png", text: '联系客服', link: '/article/?type=lxkf'},
-        {img: "service.png", text: '常见说明', link: '/generalize'}
+        {img: "sixin.png", text: '私信', link: '/directMessagesList'}
       ]
     }
   },
@@ -277,10 +259,7 @@ export default {
             })
           })
       })
-      if (file) {
-        reader.readAsDataURL(file)
-      }
-      console.log(file)
+      if (file) reader.readAsDataURL(file)
     },
     setting () {
       this.$router.push('/logout')

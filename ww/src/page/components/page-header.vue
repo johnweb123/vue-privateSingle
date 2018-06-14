@@ -28,7 +28,7 @@
       <span slot="right" v-if="rightIcon === 'rightArrow'" @click="rightClick">
           <yd-navbar-next-icon></yd-navbar-next-icon>
       </span>
-      <a slot="right" v-if="rightText" style="color:#fff" @click="rightClick">{{ rightText }}</a>
+      <a slot="right" v-if="rightText" style="color:#fff" @click="rightClick" :href="`${$store.state.G_HOST}/app/product/xzwj?url=${href}`" download="app.jpg">{{ rightText }}</a>
       <span slot="right" v-else-if="rightIcon" @click="rightClick">
           <yd-icon :name="rightIcon" size="25px" color="#fff"></yd-icon>
       </span>
@@ -65,6 +65,10 @@ export default {
       default: ''
     },
     color: {
+      type: String,
+      default: ''
+    },
+    href: {
       type: String,
       default: ''
     }

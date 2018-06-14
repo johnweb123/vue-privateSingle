@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="112233" v-once="show"></div>
+    <div class="112233"></div>
     <!-- 首页轮播 -->
     <yd-slider autoplay="3000" style="height:130px">
         <yd-slider-item v-for="(item, key) in banner" :key="key">
@@ -29,7 +29,7 @@
         </yd-grids-item>
         <yd-grids-item type="link" @click.native="$router.push({path: '/generalize'})">
             <img slot="icon" src="../../static/img/home/million_guest to_push.png">
-            <span slot="text">亿客地推</span>
+            <span slot="text">小亿推客</span>
         </yd-grids-item>
         <yd-grids-item type="link" @click.native="$router.push({path: '/article', query: { type: 'cpgl'}})">
             <img slot="icon" src="../../static/img/home/product_strategy.png">
@@ -47,6 +47,7 @@
     <!-- 滚动公告 -->
     <yd-rollnotice autoplay="4000" class="notive margin-top2">
         <yd-rollnotice-item v-for="(item, key) in gundong" :key="key">
+            <img style="width:.3rem;height:.3rem;margin-right:.1rem" src="../../static/img/horn.jpg" alt="">
             <span style="color:#F00;"> {{ item }} </span>
         </yd-rollnotice-item>
     </yd-rollnotice>
@@ -57,24 +58,14 @@
         </yd-tab-panel>
     </yd-tab>
 
-    <!-- 底部 -->
-    <!-- <yd-tabbar :fixed="true">
-        <yd-tabbar-item title="首页" link="/home" active>
-          <yd-icon name="home" slot="icon" size="0.54rem"></yd-icon>
-        </yd-tabbar-item>
-        <yd-tabbar-item title="分享" link="/share">
-          <yd-icon name="share3" slot="icon" size="0.54rem"></yd-icon>
-        </yd-tabbar-item>
-        <yd-tabbar-item title="资讯" link="/message">
-            <yd-icon name="order" slot="icon" size="0.54rem"></yd-icon>
-        </yd-tabbar-item>
-        <yd-tabbar-item title="个人中心" link="/personalCenter">
-            <yd-icon name="ucenter-outline" slot="icon" size="0.54rem"></yd-icon>
-        </yd-tabbar-item>
-    </yd-tabbar> -->
-
-    <div class="mask-layer">
+    <div class="mask-layer" v-if="pop">
       <div class="pop">
+          <div class="pop-top">
+              <span>公告</span>
+              <span class="close"><img src="../../static/img/close.png" alt="" @click="pop = false"></span>
+          </div>
+          
+          <div class="pop-main" v-html="notice.body"></div>
       </div>
     </div>
   </div>
@@ -92,12 +83,15 @@ export default {
     return {
         tab: {},
         banner: [],
-        gundong: []
+        gundong: [],
+        pop: '',
+        notice: {}
     }
   },
   mounted () {
     this._getTab()
     this._getData()
+    this._getNotice()
   },
   methods: {
       show () {},
@@ -110,6 +104,16 @@ export default {
             .then(result => {
                 this.banner = result.data.data.banner
                 this.gundong = result.data.data.gundong
+            })
+      },
+      // 获取公告
+      _getNotice () {
+          // 
+          this.pop = sessionStorage.getItem('pop') === "false" ? false : true
+          sessionStorage.setItem('pop', false)
+          this.$axios.post(`${this.$store.state.G_HOST}/app/index/gonggao`)
+            .then(result => {
+                this.notice = result.data.data
             })
       }
   }
@@ -136,7 +140,47 @@ export default {
         height: 10rem;
         margin: 2rem auto 2rem;
         background-color: #fff;
-
+        
+        .pop-top {
+            text-align: center;
+            line-height: 44px;
+            font-size: .4rem;
+            width: 100%;
+            position: relative;
+        }
+        .close {
+            position: absolute;
+            right: .22rem;
+            img {
+                width: 13px;
+                height: 13px;
+                vertical-align: middle
+            }      
+        }
+        .pop-main {
+           margin-top: .2rem;
+           text-indent:2em;
+           overflow: scroll;
+           padding: 0 .3rem;
+           line-height: 0.4rem;
+           width: 100%;
+           height: 84%;
+        }
       }
   }
+
+  .pop-main::-webkit-scrollbar {/*滚动条整体样式*/
+        width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+        height: 0;
+    }
+    .pop-main::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        background: rgba(0,0,0,0.2);
+    }
+    .pop-main::-webkit-scrollbar-track {/*滚动条里面轨道*/
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        border-radius: 0;
+        background: rgba(0,0,0,0.1);
+    }
 </style>

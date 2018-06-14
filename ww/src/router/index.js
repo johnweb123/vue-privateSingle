@@ -25,6 +25,11 @@ const commissionDetails = resolve => require(['@/page/personalCenter/commissionD
 const eweima = resolve => require(['@/page/personalCenter/eweima.vue'], resolve)
 const findPassword = resolve => require(['@/page/findPassword.vue'], resolve)
 const QRCode = resolve => require(['@/page/share/QRCode.vue'], resolve)
+const pay = resolve => require(['@/page/components/pay.vue'], resolve)
+const success = resolve => require(['@/page/success.vue'], resolve)
+const directMessagesList = resolve => require(['@/page/personalCenter/directMessagesList.vue'], resolve)
+const directMessages = resolve => require(['@/page/personalCenter/directMessages.vue'], resolve)
+const details = resolve => require(['@/page/personalCenter/details.vue'], resolve)
 
 // Adair
 const generalize = resolve => require(['@/page/personalCenter/generalize.vue'], resolve)
@@ -172,6 +177,31 @@ export default new Router({
       path: '/findPassword',
       name: 'findPassword',
       component: findPassword
+    },
+    {
+      path: '/pay',
+      name: 'pay',
+      component: pay
+    },
+    {
+      path: '/success',
+      name: 'success',
+      component: success
+    },
+    {
+      path: '/directMessagesList',
+      name: 'directMessagesList',
+      component: directMessagesList
+    },
+    {
+      path: '/directMessages',
+      name: 'directMessages',
+      component: directMessages
+    },
+    {
+      path: '/details',
+      name: 'details',
+      component: details
     },
     //   二维码页面
     {

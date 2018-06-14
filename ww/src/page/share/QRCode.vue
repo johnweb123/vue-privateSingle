@@ -1,8 +1,8 @@
 <template>
   <div class="QRCode">
-    <page-header :title="'扫码二维码'" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'"></page-header>
-
-    <img :src="img" style="width: 100%"> 
+    <page-header :title="'扫码二维码'" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'" rightText="保存" @page-right-click="rightClick" :href="img"></page-header>
+      <!-- <a id="scl" @click="scl" download="app.jpg">下载</a> -->
+      <img :src="img" style="width: 100%" alt="">
   </div>
 </template>
 
@@ -16,11 +16,11 @@ export default {
     }
   },
   mounted () {
-    this.getImg()
+    this.getImg(`${this.$store.state.G_HOST}/app/index/fximg`)
   },
   methods: {
     rightClick () {
-      window.open(this.img)
+      
     },
     getImg () {
       let uid = localStorage.getItem('uid')
@@ -28,6 +28,9 @@ export default {
         .then(result => {
           if (result.data.code == 1) this.img = result.data.data
         })
+    },
+    scl () {
+      this.$axios.post()
     }
   },
   components: { pageHeader }
