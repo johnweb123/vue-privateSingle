@@ -2,12 +2,17 @@
   <div>
 
     <page-header :title="'推广二维码'" :bgcolor="'#53beb7'" :leftIcon="'leftArrow'" :leftText="'返回'" rightText="保存" :href="img"></page-header>
-
-
+    
     <div>
       <img :src="img" style="width:100%">
       <input type="text" id="copytxt" v-model="url_short">
-      <yd-button size="large" type="primary" @click.native="copytxt">点击复制链接</yd-button>
+      <yd-button
+        size="large"
+        type="primary"
+        class="btn"
+        data-clipboard-action="copy"
+        data-clipboard-target="#copytxt"
+        @click="copytxt">点击复制链接</yd-button>
     </div>
   </div>
 </template>
@@ -26,6 +31,7 @@ export default {
   },
   mounted () {
     this._getData()
+    var clipboard = new Clipboard('.btn')
   },
   methods: {
     _getData () {
@@ -37,17 +43,14 @@ export default {
           this.url_short = result.data.data.url_short
         })
     },
-    copytxt () {
-      let val = document.getElementById('copytxt')
-      val.select();
-      document.execCommand("Copy");
-      this.toastNone()
-    },
-    toastNone() {
+    toastNone () {
         this.$dialog.toast({
             mes: '复制成功',
             timeout: 1500
         });
+    },
+    copytxt () {
+      this.toastNone()
     }
   }
 }
