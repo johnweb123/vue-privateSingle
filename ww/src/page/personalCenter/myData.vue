@@ -10,7 +10,7 @@
         </yd-cell-item>
         <yd-cell-item>
             <span slot="left">昵称：</span>
-            <yd-input slot="right" type="password" v-model="nickname" placeholder="请输入密码"></yd-input>
+            <yd-input slot="right" v-model="nickname" placeholder="请输入密码"></yd-input>
         </yd-cell-item>
         <yd-cell-item>
             <span slot="left">手机号：</span>
